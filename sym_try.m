@@ -12,8 +12,8 @@ fixed_T_mobile = [cos(beta),0,sin(beta),0;
                   -cos(alpha)*sin(beta) sin(alpha) cos(alpha)*cos(beta) t;
                     0,0,0,1];
 
-s12 = zeros(3,1); 
-s22 = zeros(3,1); 
+s12 = zeros(3,1);
+s22 = zeros(3,1);
 a11 =  a_prime*fixed_T_mobile(1,1) + hk*fixed_T_mobile(1,2) + h*fixed_T_mobile(1,3) + fixed_T_mobile(1,4) - a;
 a12 =  a_prime*fixed_T_mobile(2,1) + hk*fixed_T_mobile(2,2) + h*fixed_T_mobile(2,3) + fixed_T_mobile(2,4);
 a13 =  a_prime*fixed_T_mobile(3,1) + hk*fixed_T_mobile(3,2) + h*fixed_T_mobile(3,3) + fixed_T_mobile(3,4);

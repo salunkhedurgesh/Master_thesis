@@ -1,12 +1,9 @@
 %Function to check if there lies a singularity in the Regular Dextrous
 %Workspace (RDW)
 function sing_bool = RDW_sing(a, a_prime, h, t)
-    sphere_limit = pi/6;
-    ball_halfwidth = sin(sphere_limit);
-    hk =0; %For simplicity in the beginning, I am not involving hk
-    i = 0; %iteration keeper
-    
+    hk =0; %For simplicity in the beginning, I am not involving hk 
     sing_bool = 1; %initializing the value to 1 by assuming that there is no singularity
+    
     for alpha = -1 : 0.01 :1
         for beta = -1 :0.01 :1
             %Singularity check

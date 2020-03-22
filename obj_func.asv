@@ -3,7 +3,9 @@ function c_qual = obj_func(a, a_prime, h, t)
     sphere_limit = pi/6;
     ball_halfwidth = sin(sphere_limit);
     hk =0; %For simplicity in the beginning, I am not involving hk
+    i = 0; %iteration keeper
     act_range = [t+h-0.5, t+h+0.5]; %Actuator stroke length, "t+h" is assumed to be the mid-position of the actuator
+    quality = 0; %initializing the value to calculate quality for each loop
     c_qual = 0; %initializing the value to calculate cumulative quality
     for alpha = -1 : 0.01 :1
         for beta = -1 :0.01 :1
@@ -19,29 +21,27 @@ function c_qual = obj_func(a, a_prime, h, t)
                 break; %If any instance(alpha,beta) is singular, then the parameter is not useful
             end   
             
-            [rho1, rho2, p_lim_uni, p_lim_sph] = configuration_space(a,a_prime,h,t,ball_halfwidth,alpha,beta);
+            [rho1, rho2, p_lim_uni, p_lim_sph] = configuration_space(a,a_prime,h,t,alpha,beta);
             %Actuator lengths
             if rho1 < act_range(1) || rho1 > act_range(2)
-                %If any instance(alpha,beta) does not satisfy actuator length,
-                %then skip that iteration and evaluate the quality as '0'
+            %If any instance(alpha,beta) does not satisfy actuator length,
+            %then skip that iteration and evaluate the quality as '0'
                 continue; 
             elseif rho2 < act_range(1) || rho2 > act_range(2)
-                %If any instance(alpha,beta) does not satisfy actuator length,
-                %then skip that iteration and evaluate the quality as '0'
-                continue;
+                continue;%If any instance (alpha,beta) does not satisfy actuator length, then skip that iteration and evaluate the quality as '0'
             end
 
             %Passive limit - Universal joints
             if p_lim_uni == 0
-                %If any instance(alpha,beta) does not satisfy passive limits of
-                %the universal joint then skip that iteration and evaluate the quality as '0'
+            %If any instance(alpha,beta) does not satisfy passive limits of
+            %the universal joint then skip that iteration and evaluate the quality as '0'
                 continue;
             end
             
             %Passive limit - Spherical joints
             if p_lim_sph == 0
-                %If any instance(alpha,beta) does not satisfy passive limits of 
-                %the spherical joint then skip that iteration and evaluate the quality as '0'
+                quality = 0;%If any instance(alpha,beta) does not satisfy passive limits of the spherical joint
+                            %, then skip that iteration and evaluate the quality as '0'
                 continue;
             end
             

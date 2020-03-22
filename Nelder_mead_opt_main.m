@@ -182,7 +182,7 @@ S = Sort_S; % In order to be able to run in loop
 fprintf("Finished %dth loop \n", iteration);
 fprintf("Best evaluation yet is %d \n", min_eval);
 end %% This ends the for loop of one Nelder Mead single start iteration
-saved_S_eval(multi_start) = [S_min,min_eval];
+saved_S_eval(multi_start,:) = [S_min,min_eval];
 if min_eval <= min(multi_start_evaluations)
 Best_point_yet = S_min;
 fprintf("Best point yet is [%f,%f,%f,%f] after %d iterations \n", S_min(1),S_min(2),S_min(3),S_min(4), multi_start);

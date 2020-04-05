@@ -31,9 +31,9 @@
  %If prompt_para = 1, consider parameter weightage
             %If = 0, do not consider parameter weightage
  if input(prompt_para) == 0
-     [Best_point_yet, ball_halfwidth] = Nelder_mead_actuator_loop(sobol_var,steps,starts);
+     [Best_point_yet, ball_halfwidth,S] = Nelder_mead_actuator_loop(sobol_var,steps,starts);
  else
-     [Best_point_yet, ball_halfwidth] = Nelder_mead_para_weight(sobol_var,steps,starts);
+     [Best_point_yet, ball_halfwidth,S] = Nelder_mead_para_weight(sobol_var,steps,starts);
  end
  
  fileID = fopen('Points_record_para_5_April.txt', 'a');
@@ -52,7 +52,7 @@
  A = fscanf(tempp,formatSpec,sizeA);
  input_1 = 1;
  while input_1 >0
- prompt = 'Which point is to be plotted?';
+ prompt = 'Which point is to be plotted (0 to stop)?';
  input_i = input(prompt);
  if input_i == 0
      break

@@ -1,0 +1,4 @@
+Best point yet is [0.633037,0.755532,0.062863,2.781896] after 1 iterations 
+Best evaluation with multi_start yet is -6938 after 1 iterations 
+Best point yet is [0.636375,0.676802,0.176747,2.149396] after 2 iterations 
+Best evaluation with multi_start yet is -16424 after 2 iterations 

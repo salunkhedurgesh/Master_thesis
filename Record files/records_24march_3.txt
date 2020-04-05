@@ -1,0 +1,108 @@
+Best point yet is [1.205983,1.171645,1.075315,1.383265] after 1 iterations 
+Best evaluation with multi_start yet is -8015 after 1 iterations 
+Best point yet is [0.373917,0.489084,0.068731,3.187217] after 2 iterations 
+Best evaluation with multi_start yet is -9309 after 2 iterations 
+Best evaluation with multi_start yet is -9309 after 3 iterations 
+Best evaluation with multi_start yet is -9309 after 4 iterations 
+Best point yet is [0.823408,0.876786,0.115389,2.711631] after 5 iterations 
+Best evaluation with multi_start yet is -11626 after 5 iterations 
+Best point yet is [0.829078,0.942739,0.363233,2.721817] after 6 iterations 
+Best evaluation with multi_start yet is -12344 after 6 iterations 
+Best evaluation with multi_start yet is -12344 after 7 iterations 
+Best point yet is [0.627648,0.753601,0.433416,1.247913] after 8 iterations 
+Best evaluation with multi_start yet is -18971 after 8 iterations 
+Best evaluation with multi_start yet is -18971 after 9 iterations 
+Best evaluation with multi_start yet is -18971 after 10 iterations 
+
+
+The optimised point is found 
+a = 1.099077, a_prime = 1.085098, h = 1.204166 and t = 1.033311 
+The evaluation at this point is -9798 
+Best evaluation with multi_start yet is -18971 after 11 iterations 
+Best evaluation with multi_start yet is -18971 after 12 iterations 
+Best evaluation with multi_start yet is -18971 after 13 iterations 
+Best evaluation with multi_start yet is -18971 after 14 iterations 
+Best evaluation with multi_start yet is -18971 after 15 iterations 
+
+
+The optimised point is found 
+a = 0.549113, a_prime = 1.050475, h = 0.623906 and t = 1.030187 
+The evaluation at this point is -13875 
+Best evaluation with multi_start yet is -18971 after 16 iterations 
+
+
+The optimised point is found 
+a = 0.764571, a_prime = 0.841819, h = 0.285332 and t = 2.613264 
+The evaluation at this point is -13700 
+Best evaluation with multi_start yet is -18971 after 17 iterations 
+Best evaluation with multi_start yet is -18971 after 18 iterations 
+Best evaluation with multi_start yet is -18971 after 19 iterations 
+
+
+The optimised point is found 
+a = 1.037561, a_prime = 0.989244, h = 0.991422 and t = 1.071991 
+The evaluation at this point is -11539 
+Best evaluation with multi_start yet is -18971 after 20 iterations 
+Best evaluation with multi_start yet is -18971 after 21 iterations 
+Best evaluation with multi_start yet is -18971 after 22 iterations 
+Best evaluation with multi_start yet is -18971 after 23 iterations 
+Best evaluation with multi_start yet is -18971 after 24 iterations 
+Best evaluation with multi_start yet is -18971 after 25 iterations 
+Best point yet is [0.725061,0.785185,0.571931,1.000000] after 26 iterations 
+Best evaluation with multi_start yet is -19556 after 26 iterations 
+Best evaluation with multi_start yet is -19556 after 27 iterations 
+Best evaluation with multi_start yet is -19556 after 28 iterations 
+Best evaluation with multi_start yet is -19556 after 29 iterations 
+Best evaluation with multi_start yet is -19556 after 30 iterations 
+Best evaluation with multi_start yet is -19556 after 31 iterations 
+Best evaluation with multi_start yet is -19556 after 32 iterations 
+
+
+The optimised point is found 
+a = 0.606994, a_prime = 1.107977, h = 0.456572 and t = 1.715071 
+The evaluation at this point is -5353 
+Best evaluation with multi_start yet is -19556 after 33 iterations 
+Best evaluation with multi_start yet is -19556 after 34 iterations 
+Best evaluation with multi_start yet is -19556 after 35 iterations 
+Best evaluation with multi_start yet is -19556 after 36 iterations 
+Best evaluation with multi_start yet is -19556 after 37 iterations 
+Best evaluation with multi_start yet is -19556 after 38 iterations 
+Best evaluation with multi_start yet is -19556 after 39 iterations 
+Best evaluation with multi_start yet is -19556 after 40 iterations 
+Best evaluation with multi_start yet is -19556 after 41 iterations 
+Best evaluation with multi_start yet is -19556 after 42 iterations 
+Best evaluation with multi_start yet is -19556 after 43 iterations 
+
+
+The optimised point is found 
+a = 1.128371, a_prime = 1.028840, h = 1.068787 and t = 1.134171 
+The evaluation at this point is -10020 
+Best evaluation with multi_start yet is -19556 after 44 iterations 
+
+
+The optimised point is found 
+a = 0.495583, a_prime = 0.827493, h = 0.298789 and t = 1.939606 
+The evaluation at this point is -10113 
+Best evaluation with multi_start yet is -19556 after 45 iterations 
+Best evaluation with multi_start yet is -19556 after 46 iterations 
+Best evaluation with multi_start yet is -19556 after 47 iterations 
+Best evaluation with multi_start yet is -19556 after 48 iterations 
+Best evaluation with multi_start yet is -19556 after 49 iterations 
+Best evaluation with multi_start yet is -19556 after 50 iterations 
+Best evaluation with multi_start yet is -19556 after 51 iterations 
+Best evaluation with multi_start yet is -19556 after 52 iterations 
+Best evaluation with multi_start yet is -19556 after 53 iterations 
+Best evaluation with multi_start yet is -19556 after 54 iterations 
+Best evaluation with multi_start yet is -19556 after 55 iterations 
+Best evaluation with multi_start yet is -19556 after 56 iterations 
+Best evaluation with multi_start yet is -19556 after 57 iterations 
+Best evaluation with multi_start yet is -19556 after 58 iterations 
+
+
+The optimised point is found 
+a = 0.993767, a_prime = 1.008124, h = 0.966100 and t = 1.070470 
+The evaluation at this point is -11931 
+Best evaluation with multi_start yet is -19556 after 59 iterations 
+Best evaluation with multi_start yet is -19556 after 60 iterations 
+Best evaluation with multi_start yet is -19556 after 61 iterations 
+Best evaluation with multi_start yet is -19556 after 62 iterations 

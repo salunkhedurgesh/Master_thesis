@@ -10,7 +10,7 @@
 close all;
 clear all;
 clc
-fileID = fopen('records_24march_3.txt','a');
+fileID = fopen('records_to_supervisors.txt','a');
 %% Stage 1: Choosing the Simplex
 % % % %Dimension of a point in simplex = 4 (a, a_prime, h and t)
 % % % %We will use sobolset for generating points for multi_starting the simplex
@@ -24,8 +24,9 @@ a_prime_range = [0.25,2];
 h_range = [-0.5,1.5];
 t_range = [1,4];
 %5000 valid points 
-valid_points = 5000;
-sobol_set = sobol_tuning(n,a_range,a_prime_range,h_range,t_range,1000);
+valid_points = 500;
+sobol_var = true;
+sobol_set = sobol_tuning(n,a_range,a_prime_range,h_range,t_range,valid_points,sobol_var);
 %Simplex S has 5 points each of dimension 4
 S = zeros(n+1,n);
 
@@ -33,14 +34,22 @@ multi_start_i = 1; %Its a variable used for choosing the valid points to
                    %initialise the multi-start Simplex with valid points
 S_min = zeros(1,n);
 multi_start_evaluations(1) = 0;
+act_trigger = 0;
 
 for multi_start = 1:valid_points/5
+    
+if act_trigger == 0
+    fprintf("ACTUATOR CONSTRAINTS ARE RELAXED (change act_trigger variable = 1 to switch) \n");
+    fprintf(fileID,"ACTUATOR CONSTRAINTS ARE RELAXED \n");
+else
+    fprintf("ACTUATOR CONSTRAINTS ARE ACTIVATED (change act_trigger variable = 0 to switch) \n");
+    fprintf(fileID,"ACTUATOR CONSTRAINTS ARE ACTIVATED \n");
+end
 %This loop is because the sobolset generates many points from 
 %the given range of the parameters but we want those points that have no 
 %singularity curves in the RDW of +- 1 radian square defined in the output 
 %workspace parmetrized by alpha and beta
 
-i = multi_start;
 S = sobol_set((5*(multi_start-1) +1):5*multi_start,:);
 %Now the initial simplex of valid points has been chosen
 
@@ -55,7 +64,7 @@ prev_min_eval = 0;
 while(iteration <= steps) % stops if the solution has not changed for 10 iterations
 evaluations = zeros(n+1,1);
 for i = 1:5
-    evaluations(i) = obj_func(S(i,1), S(i,2), S(i,3), S(i,4));  
+    [evaluations(i),~] = obj_func(S(i,1), S(i,2), S(i,3), S(i,4),act_trigger);  
     %It is similar to evaluate = obj_funct(a,a_prime,h,t)
 end
 [max_eval,max_index] = max(evaluations); %To calculate the point correspoding to the worst evaluation
@@ -127,16 +136,16 @@ s_coeff = 0.5; %Shrinkage co-efficient
 
 %Reflection : reflect_point = mean_point + reflect_coeff*(mean_point - S(n+1,:))  
 reflect_point = mean_point + r_coeff*(mean_point - Sort_S(n+1,:));
-reflect_point = range_respect(reflect_point,n);
-reflect_evaluation = obj_func(reflect_point(1), reflect_point(2), reflect_point(3), reflect_point(4));
+reflect_point = range_respect(reflect_point,a_range,a_prime_range,h_range,t_range,n);
+[reflect_evaluation,~] = obj_func(reflect_point(1), reflect_point(2), reflect_point(3), reflect_point(4),act_trigger);
 if min_eval < reflect_evaluation && reflect_evaluation < max_eval
     Sort_S(n+1,:) = reflect_point;
 elseif reflect_evaluation < min_eval
     min_eval = reflect_evaluation;
     S_min = reflect_point;
     expand_point = mean_point + e_coeff*(reflect_point-mean_point);
-    expand_point = range_respect(expand_point,n);
-    expand_evaluation = obj_func(expand_point(1), expand_point(2), expand_point(3), expand_point(4));
+    expand_point = range_respect(expand_point,a_range,a_prime_range,h_range,t_range,n);
+    [expand_evaluation, ~] = obj_func(expand_point(1), expand_point(2), expand_point(3), expand_point(4),act_trigger);
         if expand_evaluation < reflect_evaluation
             min_eval = expand_evaluation;
             S_min = expand_point;
@@ -147,8 +156,8 @@ elseif reflect_evaluation < min_eval
 elseif reflect_evaluation > second_max_eval
     if second_max_eval < reflect_evaluation && reflect_evaluation < max_eval
         outside_contract_point = mean_point + k_coeff*(reflect_point-mean_point);
-        outside_contract_point = range_respect(outside_contract_point,n);
-        outside_contract_evaluation = obj_func(outside_contract_point(1), outside_contract_point(2), outside_contract_point(3), outside_contract_point(4));
+        outside_contract_point = range_respect(outside_contract_point,a_range,a_prime_range,h_range,t_range,n);
+        [outside_contract_evaluation,~] = obj_func(outside_contract_point(1), outside_contract_point(2), outside_contract_point(3), outside_contract_point(4),act_trigger);
         if outside_contract_evaluation < reflect_evaluation
             Sort_S(n+1,:) = outside_contract_point;
         else %Perform Shrinkage
@@ -158,14 +167,14 @@ elseif reflect_evaluation > second_max_eval
         end 
     elseif reflect_evaluation > max_eval
         inside_contract_point = mean_point - k_coeff*(mean_point-Sort_S(n+1,:));
-        inside_contract_point = range_respect(inside_contract_point,n);
-        inside_contract_evaluation = obj_func(inside_contract_point(1), inside_contract_point(2), inside_contract_point(3), inside_contract_point(4));
+        inside_contract_point = range_respect(inside_contract_point,a_range,a_prime_range,h_range,t_range,n);
+        [inside_contract_evaluation,~] = obj_func(inside_contract_point(1), inside_contract_point(2), inside_contract_point(3), inside_contract_point(4),act_trigger);
         if inside_contract_evaluation < max_eval
             Sort_S(n+1,:) = inside_contract_point;
         else %Perform Shrinkage
             for i = 2:n+1
               Sort_S(i,:) = Sort_S(i,:) - s_coeff*(Sort_S(i,:) - Sort_S(1,:));
-              Sort_S(i,:) = range_respect(Sort_S(i,:),n);
+              Sort_S(i,:) = range_respect(Sort_S(i,:),a_range,a_prime_range,h_range,t_range,n);
             end
         end 
     end
@@ -173,6 +182,7 @@ elseif reflect_evaluation > second_max_eval
 end
 
 S = Sort_S; % In order to be able to run in loop
+
 fprintf("Finished %dth loop \n", iteration);
 fprintf("Best evaluation yet is %d \n", min_eval);
 if min_eval < prev_min_eval
@@ -182,6 +192,7 @@ else
 end
 prev_min_eval = min_eval;
 end %% This ends the while loop of one Nelder Mead single start iteration
+
 fprintf("The simplex stopped after %d iterations \n", steps);
 fprintf("a = %f, a_prime = %f, h = %f and t = %f \n", S_min(1), S_min(2), S_min(3), S_min(4));
 fprintf("The evaluation at this point is %d \n", min_eval);
@@ -189,8 +200,17 @@ fprintf("The evaluation at this point is %d \n", min_eval);
 saved_S_eval(multi_start,:) = [S_min,min_eval];
 if min_eval <= min(multi_start_evaluations)
 Best_point_yet = S_min;
+[~,rho_vec]= obj_func(S_min(1), S_min(2), S_min(3), S_min(4),act_trigger);
+rho1_min = min(rho_vec(:,1));
+rho1_max = max(rho_vec(:,1));
+rho2_min = min(rho_vec(:,2));
+rho2_max = max(rho_vec(:,2));
 fprintf("Best point yet is [%f,%f,%f,%f] after %d iterations \n", S_min(1),S_min(2),S_min(3),S_min(4), multi_start);
 fprintf(fileID, "Best point yet is [%f,%f,%f,%f] after %d iterations \n", S_min(1),S_min(2),S_min(3),S_min(4), multi_start);
+if act_trigger == 0
+fprintf("The actuator ranges are[%f, %f, %f, %f] \n \n", rho1_min,rho1_max,rho2_min,rho2_max);
+fprintf(fileID,"The actuator ranges are[%f, %f, %f, %f] \n \n", rho1_min,rho1_max,rho2_min,rho2_max);
+end
 end
 
 multi_start_evaluations(multi_start) = min_eval;
@@ -198,9 +218,10 @@ fprintf("Best evaluation with multi_start yet is %d after %d iterations \n", min
 fprintf(fileID, "Best evaluation with multi_start yet is %d after %d iterations \n", min(multi_start_evaluations), multi_start);
 
 end
-fclose(fileID);       
+fclose(fileID);
+plot_limit(Best_point_yet(1), Best_point_yet(2), Best_point_yet(3), Best_point_yet(4),act_trigger);
 
-fileID2 = fopen('Pointsrecords_24march_3.txt','a');
+fileID2 = fopen('Pointsrecords_25march_1.txt','a');
 for i = 1:length(saved_S_eval)
   fprintf(fileID, "[%f,%f,%f,%f],{%d} \n \n", saved_S_eval(i,1),saved_S_eval(i,2),saved_S_eval(i,3),saved_S_eval(i,4), saved_S_eval(i,5));
 end

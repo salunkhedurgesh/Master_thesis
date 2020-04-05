@@ -1,0 +1,4 @@
+Best point yet is [1.250000,0.558520,1.500000,1.000000] after 1 iterations 
+The actuator ranges are[1.985373, 2.977450, 2.023916, 2.977450] 
+ 
+Best evaluation with multi_start yet is -24334 after 1 iterations 

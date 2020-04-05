@@ -1,0 +1,58 @@
+
+
+The optimised point is found 
+a = 1.249476, a_prime = 1.229968, h = 1.262748 and t = 1.230606 
+The evaluation at this point is -31603 
+Best point yet is [1.249476,1.229968,1.262748,1.230606] after 1 iterations 
+Best evaluation with multi_start yet is -31603 after 1 iterations 
+
+
+The optimised point is found 
+a = 1.250000, a_prime = 1.287802, h = 1.292924 and t = 1.286490 
+The evaluation at this point is -31722 
+Best point yet is [1.250000,1.287802,1.292924,1.286490] after 2 iterations 
+Best evaluation with multi_start yet is -31722 after 2 iterations 
+
+
+The optimised point is found 
+a = 1.250000, a_prime = 1.252979, h = 1.291583 and t = 1.274028 
+The evaluation at this point is -31795 
+Best point yet is [1.250000,1.252979,1.291583,1.274028] after 3 iterations 
+Best evaluation with multi_start yet is -31795 after 3 iterations 
+
+
+The optimised point is found 
+a = 1.250000, a_prime = 1.249084, h = 1.280494 and t = 1.254677 
+The evaluation at this point is -31698 
+Best evaluation with multi_start yet is -31795 after 4 iterations 
+
+
+The optimised point is found 
+a = 1.250000, a_prime = 1.280019, h = 1.285343 and t = 1.296204 
+The evaluation at this point is -31735 
+Best evaluation with multi_start yet is -31795 after 5 iterations 
+ACTUATOR CONSTRAINTS ARE RELAXEDACTUATOR CONSTRAINTS ARE RELAXEDACTUATOR CONSTRAINTS ARE RELAXED 
+Best point yet is [0.588032,1.555646,0.596743,1.665583] after 1 iterations 
+The actuator ranges are[1.015121, 3.306474, 0.899006, 3.306474] 
+Best evaluation with multi_start yet is -1069 after 1 iterations 
+ACTUATOR CONSTRAINTS ARE RELAXED 
+Best point yet is [1.077599,1.101715,0.323611,3.124252] after 2 iterations 
+The actuator ranges are[2.381319, 4.293010, 2.332002, 4.293010] 
+Best evaluation with multi_start yet is -8807 after 2 iterations 
+ACTUATOR CONSTRAINTS ARE RELAXED 
+ACTUATOR CONSTRAINTS ARE RELAXED 
+Best point yet is [0.856218,0.988624,0.361587,2.945889] after 1 iterations 
+The actuator ranges are[2.309425, 4.022217, 2.245846, 4.022217] 
+Best evaluation with multi_start yet is -11226 after 1 iterations 
+ACTUATOR CONSTRAINTS ARE RELAXED 
+Best evaluation with multi_start yet is -11226 after 2 iterations 
+ACTUATOR CONSTRAINTS ARE RELAXED 
+Best point yet is [1.250000,1.189358,1.500000,1.000000] after 1 iterations 
+The actuator ranges are[1.041302, 3.376179, 1.041302, 3.376179] 
+ 
+Best evaluation with multi_start yet is -7396 after 1 iterations 
+ACTUATOR CONSTRAINTS ARE RELAXED 
+Best point yet is [0.618547,0.874533,0.431357,1.448140] after 2 iterations 
+The actuator ranges are[0.969882, 2.470111, 0.914761, 2.470111] 
+ 
+Best evaluation with multi_start yet is -14673 after 2 iterations 

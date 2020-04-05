@@ -1,0 +1,27 @@
+Best point yet is [1.194547,0.572612,0.238112,3.792359] after 1 iterations 
+The actuator ranges are[3.506690, 4.534693, 3.473955, 4.534693] 
+ 
+
+
+The optimised point is found 
+a = 0.683145, a_prime = 0.585041, h = 0.188619 and t = 3.168192 
+The evaluation at this point is -40283 
+Best evaluation with multi_start yet is -40319 after 2 iterations 
+Best evaluation with multi_start yet is -40319 after 3 iterations 
+Best evaluation with multi_start yet is -40319 after 4 iterations 
+Best evaluation with multi_start yet is -40319 after 5 iterations 
+Best evaluation with multi_start yet is -40319 after 6 iterations 
+Best evaluation with multi_start yet is -40319 after 7 iterations 
+
+
+The optimised point is found 
+a = 0.627915, a_prime = 0.627803, h = 0.188482 and t = 2.895103 
+The evaluation at this point is -40243 
+Best evaluation with multi_start yet is -40319 after 8 iterations 
+Best point yet is [0.263446,0.408718,0.049611,3.291708] after 9 iterations 
+The actuator ranges are[2.974589, 3.663409, 2.962629, 3.663409] 
+ 
+Best evaluation with multi_start yet is -40323 after 10 iterations 
+Best point yet is [0.790358,0.443547,0.053968,3.319531] after 1 iterations 
+The actuator ranges are[3.018058, 3.769358, 3.008767, 3.769358] 
+ 

@@ -105,3 +105,4 @@ The evaluation at this point is -11931
 Best evaluation with multi_start yet is -19556 after 59 iterations 
 Best evaluation with multi_start yet is -19556 after 60 iterations 
 Best evaluation with multi_start yet is -19556 after 61 iterations 
+Best evaluation with multi_start yet is -19556 after 62 iterations 

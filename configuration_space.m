@@ -63,14 +63,19 @@ function [rho1,rho2, p_lim_uni, p_lim_sph] = configuration_space(a,a_prime,h,t,b
     new_vect = mat_a*origin_mobile;
     second_new_vect = mat_b*origin_mobile;
 
-    sin_theta13 = (new_vect(2)*h - new_vect(3)*hk)/(h^2 + hk^2);
-    cos_theta13 = (-new_vect(2)*hk - new_vect(3)*h)/(h^2 + hk^2);
+    if h == 0 && hk == 0
+        theta13 = alpha;
+        theta23 = beta;
+    else
+        sin_theta13 = (new_vect(2)*h - new_vect(3)*hk)/(h^2 + hk^2);
+        cos_theta13 = (-new_vect(2)*hk - new_vect(3)*h)/(h^2 + hk^2);
 
-    sin_theta23 = (-second_new_vect(1)*h + second_new_vect(3)*hk)/(h^2 + hk^2);
-    cos_theta23 = (-second_new_vect(1)*hk - second_new_vect(3)*h)/(h^2 + hk^2);
+        sin_theta23 = (-second_new_vect(1)*h + second_new_vect(3)*hk)/(h^2 + hk^2);
+        cos_theta23 = (-second_new_vect(1)*hk - second_new_vect(3)*h)/(h^2 + hk^2);
 
-    theta13 = atan2(sin_theta13,cos_theta13);
-    theta23 = atan2(sin_theta23,cos_theta23);
+        theta13 = atan2(sin_theta13,cos_theta13);
+        theta23 = atan2(sin_theta23,cos_theta23);
+    end
     
     %Passive universal joint check
     p_lim_uni = 1;

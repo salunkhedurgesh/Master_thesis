@@ -1,16 +1,5 @@
-clear all;
-close all;
-clc
-
-a = 1;
-a_prime = 1.25;
-h = 0.5;
-t = 1;
-ball_halfwidth = sind(32.5);
-ik_iter = 1;
+function [p_lim_uni1, p_lim_uni2, p_lim_sph1, p_lim_sph2] = configuration_space_PP(a,a_prime,h,t,ball_halfwidth,alpha,beta)
     hk = 0;
-    abs_x = [1;0;0];
-    abs_y = [0;1;0];
     abs_z = [0;0;1];
     %origin = [0;0;0];
     origin_mobile = [0;0;t;1];
@@ -18,8 +7,7 @@ ik_iter = 1;
     s12_mobile = [a_prime;hk;h];
     %u21 = [0;a;0];
     s22_mobile = [hk;a_prime;h];
-for alpha = -1 :0.01:1
-    for beta = -1 :0.01:1
+
     fixed_T_mobile = trans_mat('z', t)*rot_mat('x', alpha)*rot_mat('y', beta);
     s12 = fixed_T_mobile*[s12_mobile;1];
     s22 = fixed_T_mobile*[s22_mobile;1];
@@ -73,30 +61,58 @@ for alpha = -1 :0.01:1
     new_vect = mat_a*origin_mobile;
     second_new_vect = mat_b*origin_mobile;
 
-    sin_theta13 = (new_vect(2)*h - new_vect(3)*hk)/(h^2 + hk^2);
-    cos_theta13 = (-new_vect(2)*hk - new_vect(3)*h)/(h^2 + hk^2);
-
-    sin_theta23 = (-second_new_vect(1)*h + second_new_vect(3)*hk)/(h^2 + hk^2);
-    cos_theta23 = (-second_new_vect(1)*hk - second_new_vect(3)*h)/(h^2 + hk^2);
-
-    theta13 = atan2(sin_theta13,cos_theta13);
-    theta23 = atan2(sin_theta23,cos_theta23);
-    
     if h == 0 && hk == 0
         theta13 = alpha;
         theta23 = beta;
+    else
+        sin_theta13 = (new_vect(2)*h - new_vect(3)*hk)/(h^2 + hk^2);
+        cos_theta13 = (-new_vect(2)*hk - new_vect(3)*h)/(h^2 + hk^2);
+
+        sin_theta23 = (-second_new_vect(1)*h + second_new_vect(3)*hk)/(h^2 + hk^2);
+        cos_theta23 = (-second_new_vect(1)*hk - second_new_vect(3)*h)/(h^2 + hk^2);
+
+        theta13 = atan2(sin_theta13,cos_theta13);
+        theta23 = atan2(sin_theta23,cos_theta23);
     end
     
     %Passive universal joint check
-    p_lim_uni = 1;
-    p_lim_sph = 0;
+    p_lim_uni1 = 1;
+    p_lim_uni2 = 1;
     
     R_u11 = rodrig_mat3axis(tilt_axis, tilt_angle);
     rot_z_vec = R_u11*[0;0;1];
-    rot_x_vec = R_u11*[1;0;0];       
-        
-        recheck_ikin = trans_mat('x',a)*rodrig_mat4axis(tilt_axis,tilt_angle)*trans_mat('z',rho1)*rodrig_mat4axis(tilt_axis2,tilt_angle2)*rot_mat('x',theta13)*[-a_prime;0;-h;1];
-        cor_vec(ik_iter,:) = recheck_ikin - [0;0;t;1];
-        ik_iter = ik_iter +1;
+    rot_x_vec = R_u11*[1;0;0];
+    
+    if (abs(rot_z_vec(2)) > ball_halfwidth) || (abs(rot_x_vec(2)) > ball_halfwidth)
+        p_lim_uni1 = 0;
     end
+
+    R_u21 = rodrig_mat3axis(second_tilt_axis, second_tilt_angle);
+    rot_z_vec = R_u21*[0;0;1];
+    rot_y_vec = R_u21*[0;1;0];
+
+    if (abs(rot_z_vec(1)) > ball_halfwidth) || (abs(rot_y_vec(1)) > ball_halfwidth)
+        p_lim_uni2 = 0;
+    end
+    
+    %Passive spherical joint check for universal joint
+    p_lim_sph1 = 1;
+    p_lim_sph2 = 1;
+    
+    R_s12 = rodrig_mat3axis(tilt_axis2, tilt_angle2);
+    rot_z_vec = R_s12*[0;0;1];
+    rot_x_vec = R_s12*[1;0;0];
+    
+    if (abs(rot_z_vec(2)) > ball_halfwidth) || (abs(rot_x_vec(2)) > ball_halfwidth)
+        p_lim_sph1 = 0;
+    end
+    
+    R_s22 = rodrig_mat3axis(second_tilt_axis2, second_tilt_angle2);
+    rot_z_vec = R_s22*[0;0;1];
+    rot_y_vec = R_s22*[0;1;0];
+
+    if (abs(rot_z_vec(1)) > ball_halfwidth) || (abs(rot_y_vec(1)) > ball_halfwidth)
+        p_lim_sph2 = 0;
+    end
+    
 end

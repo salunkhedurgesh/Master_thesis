@@ -1,0 +1,13 @@
+The dimension of the optimisation is 4 
+The range for a is 0.250000 and 1.250000 
+The range for a_prime is 0.250000 and 2.000000 
+The range for h is -0.500000 and 1.500000 
+The range for t is 1.000000 and 4.000000 
+ 
+
+
+The simplex stopped after a = 0.313270, a_prime = 0.449389, h = 0.041771 and t = 2.074369 
+The evaluation at this point is -40199 
+ 
+ The actuator ranges are[1.719153, 2.477338, 1.709552, 2.477338] 
+ 

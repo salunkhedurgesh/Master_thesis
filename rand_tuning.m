@@ -1,12 +1,18 @@
-function S = sobol_tuning(n,a_range,a_prime_range,h_range,t_range,val)
+function S = rand_tuning(n,a_range,a_prime_range,h_range,t_range,val)
 
 %% Stage 1: Choosing the Simplex
 %Dimension of a point in simplex = 4 (a, a_prime, h and t)
 %We will use sobolset for generating points for multi_starting the simplex
 %n = 4; %number of dimensions
-p = sobolset(n,'Skip',1e3,'Leap',1e2);
-p = scramble(p,'MatousekAffineOwen');
-fprintf('Generating points using sobol function \n');
+% p = sobolset(n,'Skip',1e3,'Leap',1e2);
+% p = scramble(p,'MatousekAffineOwen');
+
+p = rand(n, val*100);
+fprintf('Generating points using random function \n');
+    
+
+
+
 %S has valid points each of dimension 4
 S = zeros(val,n);
 
@@ -17,10 +23,10 @@ S = zeros(val,n);
 i = 1;
 j = 1;
 while(j<=val)
-a = a_range(1) + p(i,1)*(a_range(2) - a_range(1));
-a_prime = a_prime_range(1) + p(i,2)*(a_prime_range(2) - a_prime_range(1));
-h = h_range(1) + p(i,3)*(h_range(2) - h_range(1));
-t = t_range(1) + p(i,4)*(t_range(2) - t_range(1));
+a = a_range(1) + p(1,i)*(a_range(2) - a_range(1));
+a_prime = a_prime_range(1) + p(2,i)*(a_prime_range(2) - a_prime_range(1));
+h = h_range(1) + p(3,i)*(h_range(2) - h_range(1));
+t = t_range(1) + p(4,i)*(t_range(2) - t_range(1));
 
 sing_bool = RDW_sing(a, a_prime, h, t);
     if sing_bool == 1

@@ -104,7 +104,7 @@ function [S_min, rho_vec] = Nelder_mead_refine(S_raw)
             simplex_size = max(simplex_length);
             eval_size = max(eval_length);
 
-            if simplex_size < epsilon1 && eval_size < epsilon2
+            if simplex_size < epsilon1 || eval_size < epsilon2
                 optimum = 1;
                 break;
             end

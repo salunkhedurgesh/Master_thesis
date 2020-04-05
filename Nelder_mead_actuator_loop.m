@@ -7,7 +7,7 @@
 %Stage 5: Verifying the validity of the generated new point
 %Code by: Durgesh Salunkhe, at Ecole Centrale de Nantes
 
-function [Best_point_yet,ball_halfwidth] = Nelder_mead_actuator_loop(sobol_var,steps,starts)
+function [Best_point_yet,ball_halfwidth,S] = Nelder_mead_actuator_loop(sobol_var,steps,starts)
 
     fprintf('Opening file named Report.text for storing the optimised points after each start \n');
     fileID = fopen('Report1.txt','a');

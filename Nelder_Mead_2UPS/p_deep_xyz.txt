@@ -1,0 +1,14 @@
+Report: 
+ The spherical limit is 45.000000 degrees 
+ The actuator constrained are considered
+ The number of starts used are 1
+ The algorithm stops when the simplex has shrunk to a size of 0.001000 or when encounters the same solution for 1 times 
+ 
+[0.773016,1.046363,0.312859,3.632912],{-32313} 
+ 
+The point after refining is:
+a = 0.783016, a_prime = 1.028863, h = 0.352859 and t = 3.692912
+Minimum stroke length = 3.185430 and maximum stroke length = 4.778145 
+The point after refining is:
+a = 0.783016, a_prime = 1.028863, h = 0.352859 and t = 3.692912
+Minimum stroke length = 3.185430 and maximum stroke length = 4.778145 

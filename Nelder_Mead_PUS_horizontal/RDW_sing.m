@@ -1,0 +1,17 @@
+%Function to check if there lies a singularity in the Regular Dextrous
+%Workspace (RDW)
+function sing_bool = RDW_sing(a, a_prime, h, t)
+    hk =0; %For simplicity in the beginning, I am not involving hk 
+    sing_bool = 1; %initializing the value to 1 by assuming that there is no singularity
+    
+    for alpha = -1 : 0.01 :1
+        for beta = -1 :0.01 :1
+            %Singularity check
+           jac_det = t*(sin(alpha)^3*sin(beta)*cos(beta)^2*a_prime^2*h-sin(alpha)^3*cos(beta)^3*a_prime*h^2+sin(alpha)*sin(beta)*cos(beta)^2*cos(alpha)^2*a_prime^2*h-sin(alpha)*cos(beta)^3*cos(alpha)^2*a_prime*h^2-sin(alpha)^2*sin(beta)^2*cos(alpha)*a_prime^2*h-sin(alpha)^2*sin(beta)*cos(beta)*cos(alpha)*a_prime^3+sin(alpha)^2*sin(beta)*cos(beta)*cos(alpha)*a_prime*h^2+sin(alpha)^2*cos(beta)^2*cos(alpha)*a_prime^2*h-sin(beta)^2*cos(alpha)^3*a_prime^2*h-sin(beta)*cos(beta)*cos(alpha)^3*a_prime^3+sin(beta)*cos(beta)*cos(alpha)^3*a_prime*h^2+cos(beta)^2*cos(alpha)^3*a_prime^2*h-sin(alpha)*sin(beta)^2*cos(alpha)*a_prime*h*t-sin(alpha)*cos(beta)^2*cos(alpha)*a_prime*h*t+sin(alpha)*sin(beta)*cos(beta)*sqrt(-sin(alpha)^2*sin(beta)^2*a_prime^2+2*sin(alpha)^2*sin(beta)*cos(beta)*a_prime*h-sin(alpha)^2*cos(beta)^2*h^2-cos(alpha)^2*sin(beta)^2*a_prime^2+2*cos(alpha)^2*sin(beta)*cos(beta)*a_prime*h-cos(alpha)^2*cos(beta)^2*h^2+2*cos(alpha)*sin(beta)*a_prime*t-2*cos(alpha)*cos(beta)*h*t+a^2-t^2)*a_prime*h-sin(alpha)*sin(beta)*cos(beta)*sqrt(-sin(alpha)^2*cos(beta)^2*h^2-cos(alpha)^2*cos(beta)^2*h^2-sin(alpha)^2*a_prime^2-2*cos(alpha)*cos(beta)*h*t-cos(alpha)^2*a_prime^2-2*sin(alpha)*a_prime*t+a^2-t^2)*a_prime*h-sin(alpha)*cos(beta)^2*sqrt(-sin(alpha)^2*sin(beta)^2*a_prime^2+2*sin(alpha)^2*sin(beta)*cos(beta)*a_prime*h-sin(alpha)^2*cos(beta)^2*h^2-cos(alpha)^2*sin(beta)^2*a_prime^2+2*cos(alpha)^2*sin(beta)*cos(beta)*a_prime*h-cos(alpha)^2*cos(beta)^2*h^2+2*cos(alpha)*sin(beta)*a_prime*t-2*cos(alpha)*cos(beta)*h*t+a^2-t^2)*h^2+sin(alpha)*cos(beta)^2*sqrt(-sin(alpha)^2*cos(beta)^2*h^2-cos(alpha)^2*cos(beta)^2*h^2-sin(alpha)^2*a_prime^2-2*cos(alpha)*cos(beta)*h*t-cos(alpha)^2*a_prime^2-2*sin(alpha)*a_prime*t+a^2-t^2)*h^2+sin(beta)*cos(alpha)^2*a_prime*h*t+cos(beta)*cos(alpha)^2*a_prime^2*t-cos(alpha)*sin(beta)*sqrt(-sin(alpha)^2*sin(beta)^2*a_prime^2+2*sin(alpha)^2*sin(beta)*cos(beta)*a_prime*h-sin(alpha)^2*cos(beta)^2*h^2-cos(alpha)^2*sin(beta)^2*a_prime^2+2*cos(alpha)^2*sin(beta)*cos(beta)*a_prime*h-cos(alpha)^2*cos(beta)^2*h^2+2*cos(alpha)*sin(beta)*a_prime*t-2*cos(alpha)*cos(beta)*h*t+a^2-t^2)*a_prime^2+cos(alpha)*cos(beta)*sqrt(-sin(alpha)^2*sin(beta)^2*a_prime^2+2*sin(alpha)^2*sin(beta)*cos(beta)*a_prime*h-sin(alpha)^2*cos(beta)^2*h^2-cos(alpha)^2*sin(beta)^2*a_prime^2+2*cos(alpha)^2*sin(beta)*cos(beta)*a_prime*h-cos(alpha)^2*cos(beta)^2*h^2+2*cos(alpha)*sin(beta)*a_prime*t-2*cos(alpha)*cos(beta)*h*t+a^2-t^2)*a_prime*h)/(sqrt(-sin(alpha)^2*sin(beta)^2*a_prime^2+2*sin(alpha)^2*sin(beta)*cos(beta)*a_prime*h-sin(alpha)^2*cos(beta)^2*h^2-cos(alpha)^2*sin(beta)^2*a_prime^2+2*cos(alpha)^2*sin(beta)*cos(beta)*a_prime*h-cos(alpha)^2*cos(beta)^2*h^2+2*cos(alpha)*sin(beta)*a_prime*t-2*cos(alpha)*cos(beta)*h*t+a^2-t^2)*sqrt(-sin(alpha)^2*cos(beta)^2*h^2-cos(alpha)^2*cos(beta)^2*h^2-sin(alpha)^2*a_prime^2-2*cos(alpha)*cos(beta)*h*t-cos(alpha)^2*a_prime^2-2*sin(alpha)*a_prime*t+a^2-t^2));
+            if jac_det < 0.005
+                sing_bool = 0;
+                break; %If any instance(alpha,beta) is singular, then the parameter is not useful
+            end   
+        end
+    end
+end

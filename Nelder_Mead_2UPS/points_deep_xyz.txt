@@ -1,0 +1,16 @@
+Report: 
+ The spherical limit is 45.000000 degrees 
+ The actuator constrained are considered
+ The number of starts used are 1
+ The algorithm stops when the simplex has shrunk to a size of 0.001000 or when encounters the same solution for 1 times 
+ 
+[1.244076,1.260945,0.216469,3.768232],{-24055} 
+ 
+Report: 
+ The spherical limit is 45.000000 degrees 
+ The actuator constrained are considered
+ The number of starts used are 1
+ The algorithm stops when the simplex has shrunk to a size of 0.001000 or when encounters the same solution for 1 times 
+ 
+[1.239829,0.867523,0.264100,3.913576],{-40223} 
+ 

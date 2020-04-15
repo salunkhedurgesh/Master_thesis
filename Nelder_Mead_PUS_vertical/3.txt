@@ -1,0 +1,15 @@
+The dimension of the optimisation is 5 
+The range for a is 0.300000 and 1.000000 
+The range for a_prime is 0.200000 and 0.900000 
+The range for h is 0.000000 and 0.250000 
+The range for t is 0.500000 and 1.000000 
+ 
+The range for the offset is 0.100000 and 0.500000 
+ 
+
+
+The simplex stopped after a = 1.000000, a_prime = 0.469830, h = 0.027019 t = 0.996201 and offset = 0.106751 
+The evaluation at this point is -19371 
+ 
+ The actuator ranges are[1.600923, 2.398384, 1.595695, 2.398384] 
+ 

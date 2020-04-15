@@ -1,0 +1,57 @@
+The dimension of the optimisation is 4 
+The range for a is 0.500000 and 1.500000 
+The range for a_prime is 0.250000 and 1.250000 
+The range for h is -0.500000 and 0.500000 
+The range for t is 0.000000 and 2.000000 
+ 
+The dimension of the optimisation is 4 
+The range for a is 0.500000 and 2.000000 
+The range for a_prime is 0.250000 and 1.000000 
+The range for h is -0.500000 and 0.500000 
+The range for t is 0.000000 and 1.000000 
+ 
+The dimension of the optimisation is 4 
+The range for a is 0.000000 and 3.000000 
+The range for a_prime is 0.000000 and 5.000000 
+The range for h is -1.000000 and 1.000000 
+The range for t is 0.000000 and 2.000000 
+ 
+The dimension of the optimisation is 4 
+The range for a is 0.000000 and 3.000000 
+The range for a_prime is 0.000000 and 5.000000 
+The range for h is -1.000000 and 1.000000 
+The range for t is 0.000000 and 2.000000 
+ 
+The dimension of the optimisation is 4 
+The range for a is 0.250000 and 2.000000 
+The range for a_prime is 0.100000 and 1.000000 
+The range for h is -0.500000 and 0.500000 
+The range for t is 1.500000 and 3.000000 
+ 
+The dimension of the optimisation is 4 
+The range for a is 1.500000 and 3.000000 
+The range for a_prime is 0.100000 and 1.000000 
+The range for h is -0.500000 and 0.500000 
+The range for t is 0.000000 and 3.000000 
+ 
+The dimension of the optimisation is 4 
+The range for a is 1.000000 and 2.000000 
+The range for a_prime is 0.100000 and 0.500000 
+The range for h is 0.000000 and 0.250000 
+The range for t is 0.500000 and 1.000000 
+ 
+The dimension of the optimisation is 4 
+The range for a is 1.000000 and 2.000000 
+The range for a_prime is 0.100000 and 0.500000 
+The range for h is 0.000000 and 0.250000 
+The range for t is 0.500000 and 1.000000 
+ 
+
+
+The optimised point is found 
+a = 0.000000, a_prime = 0.000000, h = 0.000000 and t = 0.000000 
+The evaluation at this point is -40401 
+ 
+The actuator ranges are[0.000000, 0.000000, 0.000000, 0.000000] 
+ 
+Best point yet is [0.000000,0.000000,0.000000,0.000000] after 1 iterations 

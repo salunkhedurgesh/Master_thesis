@@ -1,0 +1,48 @@
+The dimension of the optimisation is 4 
+The range for a is 0.250000 and 1.250000 
+The range for a_prime is 0.250000 and 2.000000 
+The range for h is -0.500000 and 1.500000 
+The range for t is 1.000000 and 4.000000 
+ 
+
+
+The simplex stopped after a = 1.244076, a_prime = 1.260945, h = 0.216469 and t = 3.768232 
+The evaluation at this point is -24055 
+ 
+ The actuator ranges are[3.334680, 5.002020, 3.334680, 5.002020] 
+ 
+Best point yet is [1.244076,1.260945,0.216469,3.768232] after 1 iterations 
+The dimension of the optimisation is 4 
+The range for a is 0.250000 and 1.250000 
+The range for a_prime is 0.250000 and 2.000000 
+The range for h is -0.500000 and 1.500000 
+The range for t is 1.000000 and 4.000000 
+ 
+
+
+The simplex stopped after a = 1.239829, a_prime = 0.867523, h = 0.264100 and t = 3.913576 
+The evaluation at this point is -40223 
+ 
+ The actuator ranges are[3.371255, 4.888257, 3.332454, 4.888257] 
+ 
+Best point yet is [1.239829,0.867523,0.264100,3.913576] after 1 iterations 
+The dimension of the optimisation is 4 
+The range for a is 0.250000 and 1.250000 
+The range for a_prime is 0.250000 and 2.000000 
+The range for h is -0.500000 and 1.500000 
+The range for t is 1.000000 and 4.000000 
+ 
+The dimension of the optimisation is 4 
+The range for a is 0.250000 and 1.250000 
+The range for a_prime is 0.250000 and 2.000000 
+The range for h is -0.500000 and 1.500000 
+The range for t is 1.000000 and 4.000000 
+ 
+
+
+The simplex stopped after a = 0.773016, a_prime = 1.046363, h = 0.312859 and t = 3.632912 
+The evaluation at this point is -32313 
+ 
+ The actuator ranges are[3.137371, 4.706057, 3.137371, 4.706057] 
+ 
+Best point yet is [0.773016,1.046363,0.312859,3.632912] after 1 iterations 

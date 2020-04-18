@@ -38,3 +38,13 @@ The arrangement of 6 joints can be done in different fashion. UPS is one option 
 
 This yields different optimized results also highlighting the bad configurations. For example, the PUS configuration with prismatic joint in horizontal direction is super bad and should not be used if we can deploy any other configuration of the mechanism.
 
+# Nelder_Mead_Fusion
+As of 18th April, 2020. This folder is the important one. The aim for the codes in this folder is to be able to have the flexibility to implement any mechanism for Nelder Mead optimisation.
+What do we need out of a new mechanism?
+1. Inverse kinematics and the configuration space, especially those joint values on which the constraints is to be applied
+2. Determinant of the jacobian matrix J in J*x_dot = q_dot..... Note that it is the reverse of well generally accepted x_dot = J*q_dot.
+
+That's it and we are happy to find the optimised solution.
+
+It is super flexible. Write the objective function you want, define your own reward system to bias certain favourable parameters.
+The constraints can be added or removed easily so it can help us with experimenting with different constraints.

@@ -7,7 +7,7 @@ Supervisors: Prof. Damien Chablat, Prof. Marcello Sanguineti, Dr. Guillaume Mich
 # Aim of the thesis:
 The thesis aims to contribute an analytical perspective into designing a 2 dof orientation parallel mechanism in order to manipulate an endoscope in an otological surgery. The beginning of the thesis started with singularity analysis and kinematic analysis and later proceeded onto optimization of the parameters. 
 
-The report on the bibliography can be found on: https://drive.google.com/open?id=1tobUFj1r9gwnmWY5w2I0DkBk3LlkEWW9
+The report on the **bibliography** can be found on: https://drive.google.com/open?id=1tobUFj1r9gwnmWY5w2I0DkBk3LlkEWW9
 
 # Optimization of the mechanism
 
@@ -26,10 +26,11 @@ In case of manipulator the 2nd and 3rd part are easy. You solve inverse kinemati
 Try defining all of this in an equation. Maybe, its easy for some mechanisms but to accomodate the wildest imaginations of the revered designers of mechanism and their creative forte, we need to come up with a methodology that allows us to optimize a mechanism if we can define the 2nd part and 3rd part and have a clear idea of objective function (though we cannot define it in explicit form yet). For this we can use 'type O' optimization methods. These methods do not need the derivative of the function to find its maxima and minima and so do not care about the smoothnes, differentiability of the curve we are trying to optimize. One of such algorithms is the well known genetic algorithms. But, we will be implementing a much faster optimizing technique, Nelder Mead algorithm. The disadvantage of this algorithm is that we may get locked in local minimas and so to get around this we use multi start technique by extracting the initial points for each optimisation method by a low-discrepancy distribution of the set of points in our valid ranges (the 3rd part).
 
 # Variations of the mechanism
-While writing this README (15 April, 2020), I have uploaded 3 folders:
+While writing this README (18 April, 2020), I have uploaded 3 folders:
 1. Nelder_Mead_2UPS
 2. Nelder_Mead_2PUS_horizontal
 3. Nelder_Mead_2PUS-Vertical
+4. ***Nelder_Mead_Fusion***
 
 The mechanism in discussion is the one that implements the passive leg that defines the constraints of the mechanism. The 2UPS legs have 6 dof and thus can be arranged to have no reciprocals (sorry, if you don't know screw theory) and do not put any constraint on the mechanism. You can find the detailed information in my report mentioned above, the mechanism is shown in Figure: 1.4 of the report. The mechanism without its parallel bar extension is quite famous and widely known in the mechanism community. (One of the examples: Kinematic Analysis of a Novel Parallel 2SPRR+1U Ankle Mechanism in Humanoid Robot, Shivesh Kumar et. al)
 

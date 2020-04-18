@@ -7,7 +7,7 @@ Supervisors: Prof. Damien Chablat, Prof. Marcello Sanguineti, Dr. Guillaume Mich
 # Aim of the thesis:
 The thesis aims to contribute an analytical perspective into designing a 2 dof orientation parallel mechanism in order to manipulate an endoscope in an otological surgery. The beginning of the thesis started with singularity analysis and kinematic analysis and later proceeded onto optimization of the parameters. 
 
-The report of the same can be found on: https://drive.google.com/file/d/1fjpB2BsJuB12C11z3jZiHe2A0ZXEp3ss/view?usp=sharing
+The report on the bibliography can be found on: https://drive.google.com/file/d/1fjpB2BsJuB12C11z3jZiHe2A0ZXEp3ss/view?usp=sharing
 
 # Optimization of the mechanism
 

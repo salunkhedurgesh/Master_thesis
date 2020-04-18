@@ -42,7 +42,7 @@ This yields different optimized results also highlighting the bad configurations
 As of 18th April, 2020. This folder is the important one. The aim for the codes in this folder is to be able to have the flexibility to implement any mechanism for Nelder Mead optimisation.
 What do we need out of a new mechanism?
 1. Inverse kinematics and the configuration space, especially those joint values on which the constraints is to be applied
-2. Determinant of the jacobian matrix J in J*x_dot = q_dot..... Note that it is the reverse of well generally accepted x_dot = J*q_dot.
+2. Determinant of the jacobian matrix J in J.x_dot = q_dot..... Note that it is the reverse of generally known x_dot = J*q_dot.
 
 That's it and we are happy to find the optimised solution.
 

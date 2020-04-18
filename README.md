@@ -1,9 +1,8 @@
 # Master_thesis
-Optimisation of a 2-dof orientation parallel mechanism \
+Optimisation of a 2-dof orientation parallel mechanism
 
 Master Thesis at Ecole Centrale de Nantes and LS2N \
-Supervisors: \
-Prof. Damien Chablat, Prof. Marcello Sanguineti, Dr. Guillaume Michel and Dr. Shivesh Kumar
+Supervisors: Prof. Damien Chablat, Prof. Marcello Sanguineti, Dr. Guillaume Michel and Dr. Shivesh Kumar
 
 # Aim of the thesis:
 The thesis aims to contribute an analytical perspective into designing a 2 dof orientation parallel mechanism in order to manipulate an endoscope in an otological surgery. The beginning of the thesis started with singularity analysis and kinematic analysis and later proceeded onto optimization of the parameters. 

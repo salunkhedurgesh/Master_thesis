@@ -1,8 +1,8 @@
 # Master_thesis
-Optimisation of a 2-dof orientation parallel mechanism
+Optimisation of a 2-dof orientation parallel mechanism \\
 
-Master Thesis at Ecole Centrale de Nantes and LS2N
-Supervisors: 
+Master Thesis at Ecole Centrale de Nantes and LS2N \
+Supervisors: \
 Prof. Damien Chablat, Prof. Marcello Sanguineti, Dr. Guillaume Michel and Dr. Shivesh Kumar
 
 # Aim of the thesis:

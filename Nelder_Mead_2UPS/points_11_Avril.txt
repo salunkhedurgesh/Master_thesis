@@ -30,3 +30,6 @@ Minimum stroke length = 1.113756 and maximum stroke length = 1.582943
 The point after refining is:
 a = 0.286344, a_prime = 0.264782, h = 0.071061 and t = 1.308661
 Minimum stroke length = 1.113756 and maximum stroke length = 1.582943 
+Best_point_yet = [0.286344, 0.264782, 0.071061, 1.308661];
+Best_rho = [1.113756], 1.582943, 1.113756, 1.582943];
+ball_halfwidth = sind(45);

@@ -157,13 +157,14 @@ function [single_best_point, single_best_rho, single_eval, optimum] = nelder_mea
         
         S = Sort_S; % In order to be able to run in loop
         
-        if min_eval < prev_min_eval
+        improvement = 5;
+        if min_eval < (1+improvement/100)*prev_min_eval %atleast 1 percent improvement, this is necessary to stop the algorithm early
             iteration = 1;
             fprintf("Better point found.. continuing\n");
             fprintf("New evaluation is %d \n\n", min_eval);
         else
             iteration = iteration+1;
-            fprintf("Same solution encountered\n");
+            fprintf("Same solution encountered or less than %d %% improvement\n", improvement);
             fprintf("The evaluation is %d \n\n", min_eval);
         end
         

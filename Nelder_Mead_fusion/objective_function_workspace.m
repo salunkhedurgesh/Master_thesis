@@ -44,7 +44,7 @@ function [c_qual,rho_vec] = objective_function_workspace(type, parameters, limit
     end
     
     stroke = limits(3); %This is the ratio of min and max actuator lengths and not the stroke length itself
-    if rho1_range(2) > stroke*rho1_range(1) && rho2_range(2) > stroke*rho2_range(1) 
+    if rho1_range(2) > stroke*rho1_range(1) || rho2_range(2) > stroke*rho2_range(1) 
         %Maximizing the valid points by applying the actuator limits 
         j = 1;
         stroke_step = 3;

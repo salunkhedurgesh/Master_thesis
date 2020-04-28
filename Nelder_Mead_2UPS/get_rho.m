@@ -1,6 +1,6 @@
 function [rho1,rho2] = get_rho(a,a_prime,h,t,alpha,beta)
     
-    hk = 0;    
+    hk = 0.25;    
     s12_mobile = [a_prime;hk;h];
     s22_mobile = [hk;a_prime;h];
     

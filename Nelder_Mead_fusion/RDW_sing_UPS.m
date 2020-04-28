@@ -7,17 +7,30 @@
 % 1. boolean for non singular RDW
 function sing_bool = RDW_sing_UPS(parameters)
     
-    a = parameters(1);
-    a_prime = parameters(2);
-    h = parameters(3);
-    t = parameters(4);
+    u11x = parameters(1);
+    u11y= parameters(2);
+    u11z = parameters(3);
+    
+    s12x = parameters(4);
+    s12y= parameters(5);
+    s12z = parameters(6);
+    
+    u21x = parameters(7);
+    u21y= parameters(8);
+    u21z = parameters(9);
+    
+    s22x = parameters(10);
+    s22y= parameters(11);
+    s22z = parameters(12);
+    
+    t = parameters(13);
     
     sing_bool = 1; %initializing the value to 1 by assuming that there is no singularity
     
     for alpha = -1 : 0.01 :1
         for beta = -1 :0.01 :1
             %Singularity check
-            jac_det = ((2*abs(t + h*cos(alpha)*cos(beta) - a_prime*cos(alpha)*sin(beta))*sign(t + h*cos(alpha)*cos(beta) - a_prime*cos(alpha)*sin(beta))*(h*cos(beta)*sin(alpha) - a_prime*sin(alpha)*sin(beta)) - 2*abs(h*cos(beta)*sin(alpha) - a_prime*sin(alpha)*sin(beta))*sign(h*cos(beta)*sin(alpha) - a_prime*sin(alpha)*sin(beta))*(h*cos(alpha)*cos(beta) - a_prime*cos(alpha)*sin(beta)))*(2*h*abs(a - a_prime*cos(alpha) + h*cos(beta)*sin(alpha))*sign(a - a_prime*cos(alpha) + h*cos(beta)*sin(alpha))*sin(alpha)*sin(beta) - 2*h*sign(h*sin(beta))*cos(beta)*abs(h*sin(beta)) + 2*h*abs(t + a_prime*sin(alpha) + h*cos(alpha)*cos(beta))*sign(t + a_prime*sin(alpha) + h*cos(alpha)*cos(beta))*cos(alpha)*sin(beta)))/(4*(abs(t + h*cos(alpha)*cos(beta) - a_prime*cos(alpha)*sin(beta))^2 + abs(a + a_prime*cos(beta) + h*sin(beta))^2 + abs(h*cos(beta)*sin(alpha) - a_prime*sin(alpha)*sin(beta))^2)^(1/2)*(abs(h*sin(beta))^2 + abs(a - a_prime*cos(alpha) + h*cos(beta)*sin(alpha))^2 + abs(t + a_prime*sin(alpha) + h*cos(alpha)*cos(beta))^2)^(1/2)) + ((2*abs(a - a_prime*cos(alpha) + h*cos(beta)*sin(alpha))*sign(a - a_prime*cos(alpha) + h*cos(beta)*sin(alpha))*(a_prime*sin(alpha) + h*cos(alpha)*cos(beta)) + 2*abs(t + a_prime*sin(alpha) + h*cos(alpha)*cos(beta))*sign(t + a_prime*sin(alpha) + h*cos(alpha)*cos(beta))*(a_prime*cos(alpha) - h*cos(beta)*sin(alpha)))*(2*abs(t + h*cos(alpha)*cos(beta) - a_prime*cos(alpha)*sin(beta))*sign(t + h*cos(alpha)*cos(beta) - a_prime*cos(alpha)*sin(beta))*(a_prime*cos(alpha)*cos(beta) + h*cos(alpha)*sin(beta)) - 2*abs(a + a_prime*cos(beta) + h*sin(beta))*sign(a + a_prime*cos(beta) + h*sin(beta))*(h*cos(beta) - a_prime*sin(beta)) + 2*abs(h*cos(beta)*sin(alpha) - a_prime*sin(alpha)*sin(beta))*sign(h*cos(beta)*sin(alpha) - a_prime*sin(alpha)*sin(beta))*(a_prime*cos(beta)*sin(alpha) + h*sin(alpha)*sin(beta))))/(4*(abs(t + h*cos(alpha)*cos(beta) - a_prime*cos(alpha)*sin(beta))^2 + abs(a + a_prime*cos(beta) + h*sin(beta))^2 + abs(h*cos(beta)*sin(alpha) - a_prime*sin(alpha)*sin(beta))^2)^(1/2)*(abs(h*sin(beta))^2 + abs(a - a_prime*cos(alpha) + h*cos(beta)*sin(alpha))^2 + abs(t + a_prime*sin(alpha) + h*cos(alpha)*cos(beta))^2)^(1/2));
+            jac_det = ((2*abs(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))*sign(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))*(s22y*cos(alpha) - s22z*cos(beta)*sin(alpha) + s22x*sin(alpha)*sin(beta)) + 2*abs(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))*sign(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))*(s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta)))*(2*abs(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))*sign(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))*(s12x*cos(beta)*sin(alpha) + s12z*sin(alpha)*sin(beta)) + 2*abs(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))*sign(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))*(s12x*cos(alpha)*cos(beta) + s12z*cos(alpha)*sin(beta)) - 2*abs(s12x*cos(beta) - u11x + s12z*sin(beta))*sign(s12x*cos(beta) - u11x + s12z*sin(beta))*(s12z*cos(beta) - s12x*sin(beta))))/(4*(abs(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))^2 + abs(s12x*cos(beta) - u11x + s12z*sin(beta))^2 + abs(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))^2)^(1/2)*(abs(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))^2 + abs(s22x*cos(beta) - u21x + s22z*sin(beta))^2 + abs(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))^2)^(1/2)) - ((2*abs(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))*sign(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))*(s12y*cos(alpha) - s12z*cos(beta)*sin(alpha) + s12x*sin(alpha)*sin(beta)) + 2*abs(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))*sign(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))*(s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta)))*(2*abs(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))*sign(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))*(s22x*cos(beta)*sin(alpha) + s22z*sin(alpha)*sin(beta)) + 2*abs(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))*sign(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))*(s22x*cos(alpha)*cos(beta) + s22z*cos(alpha)*sin(beta)) - 2*abs(s22x*cos(beta) - u21x + s22z*sin(beta))*sign(s22x*cos(beta) - u21x + s22z*sin(beta))*(s22z*cos(beta) - s22x*sin(beta))))/(4*(abs(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))^2 + abs(s12x*cos(beta) - u11x + s12z*sin(beta))^2 + abs(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))^2)^(1/2)*(abs(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))^2 + abs(s22x*cos(beta) - u21x + s22z*sin(beta))^2 + abs(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))^2)^(1/2));
             if jac_det < 0.005
                 sing_bool = 0;
                 break; %If any instance(alpha,beta) is singular, then the parameter is not useful

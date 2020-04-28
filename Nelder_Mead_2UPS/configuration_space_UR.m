@@ -1,5 +1,5 @@
 function [rho1,rho2, p_lim_uni, p_lim_sph] = configuration_space_UR(a,a_prime,h,t,ball_halfwidth,alpha,beta)
-    hk = 0;
+    hk = 0.25;
     abs_z = [0;0;1];
     %origin = [0;0;0];
     origin_mobile = [0;0;t;1];

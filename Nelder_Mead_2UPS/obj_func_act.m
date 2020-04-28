@@ -1,7 +1,8 @@
 %h = 0; hk= 0; a = 1; a_prime = 1.25; t = 1;
 function [c_qual,rho_vec] = obj_func_act(a, a_prime, h, t, ball_halfwidth)
+   
     valid_iter = 1;
-    hk =0; %For simplicity in the beginning, I am not involving hk
+    hk =0.25; %For simplicity in the beginning, I am not involving hk
     [rho1_range,rho2_range] = rho_range(a,a_prime,h,t);
     
     c_qual_only_joint = 0;

@@ -1,0 +1,85 @@
+The type of mechanism optimised is 2UPS
+The dimension of the optimisation is 13, the number of starts are 5
+The number of iterations if same solution is encountered is 25 
+The limits on universal joint is 45 degrees, spherical joint is 45 degrees and the stroke ration for actuators is 1.500000e+00 
+The objective function aims to calculate compact design 
+The ranges for the parameters are: 
+
+Parameter 1: [0.25 1.50] 
+Parameter 2: [0.25 1.50] 
+Parameter 3: [-0.10 0.10] 
+Parameter 4: [0.25 2.00] 
+Parameter 5: [0.25 2.00] 
+Parameter 6: [-0.50 0.50] 
+Parameter 7: [0.25 1.50] 
+Parameter 8: [0.25 1.50] 
+Parameter 9: [-0.10 0.10] 
+Parameter 10: [0.25 2.00] 
+Parameter 11: [0.25 2.00] 
+Parameter 12: [-0.50 0.50] 
+Parameter 13: [1.00 4.00] 
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 0.250000, 	
+Parameter 2 = 0.250000, 	
+Parameter 3 = 0.100000, 	
+Parameter 4 = 1.727227, 	
+Parameter 5 = 0.838242, 	
+Parameter 6 = 0.328727, 	
+Parameter 7 = 0.367475, 	
+Parameter 8 = 0.475453, 	
+Parameter 9 = 0.042003, 	
+Parameter 10 = 1.074061, 	
+Parameter 11 = 0.957171, 	
+Parameter 12 = 0.086143, 	
+Parameter 13 = 3.551320, 	
+The actuator ranges are: 3.539844 	5.309767 	3.261469 	4.892204 	
+The evaluation at this point is -1.471632e+03 
+ 
+Best point yet is: 0.250000 	0.250000 	0.100000 	1.727227 	0.838242 	0.328727 	0.367475 	0.475453 	0.042003 	1.074061 	0.957171 	0.086143 	3.551320 	
+The actuator range is: 3.539844 	5.309767 	3.261469 	4.892204 	
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 0.446702, 	
+Parameter 2 = 0.250000, 	
+Parameter 3 = -0.059059, 	
+Parameter 4 = 0.689933, 	
+Parameter 5 = 0.871177, 	
+Parameter 6 = 0.379322, 	
+Parameter 7 = 0.537539, 	
+Parameter 8 = 0.274548, 	
+Parameter 9 = -0.100000, 	
+Parameter 10 = 0.405673, 	
+Parameter 11 = 1.892116, 	
+Parameter 12 = 0.483801, 	
+Parameter 13 = 2.546069, 	
+The actuator ranges are: 2.540297 	3.810445 	3.084973 	4.627459 	
+The evaluation at this point is -1.552320e+03 
+ 
+Best point yet is: 0.446702 	0.250000 	-0.059059 	0.689933 	0.871177 	0.379322 	0.537539 	0.274548 	-0.100000 	0.405673 	1.892116 	0.483801 	2.546069 	
+The actuator range is: 2.540297 	3.810445 	3.084973 	4.627459 	
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 0.2503,	
+Parameter 2 = 0.2503,	
+Parameter 3 = -0.0948, 	
+Parameter 4 = 0.3562, 	
+Parameter 5 = 0.2763, 	
+Parameter 6 = 0.1825, 	
+Parameter 7 = 0.2538, 	
+Parameter 8 = 0.2583, 	
+Parameter 9 = -0.0945, 	
+Parameter 10 = 0.2505, 	
+Parameter 11 = 0.3536, 	
+Parameter 12 = 0.1300, 	
+Parameter 13 = 1.8795, 	
+The actuator ranges are: 2.540297 	3.810445 	3.084973 	4.627459 	
+The evaluation at this point is -2.757670e+03 
+ 
+Best point yet is:  0.2503    0.2503   -0.0948    0.3562    0.2763    0.1825    0.2538    0.2583   -0.0945    0.2505  0.3536    0.1300    1.8795
+The actuator range is: 1.6559    2.4839    1.6353    2.4529 
+
+

@@ -1,6 +1,6 @@
 function [rho1_range,rho2_range] = rho_range(a,a_prime,h,t)
     
-    hk = 0;    
+    hk = 0.25;    
     s12_mobile = [a_prime;hk;h];
     s22_mobile = [hk;a_prime;h];
     r_i = 1;

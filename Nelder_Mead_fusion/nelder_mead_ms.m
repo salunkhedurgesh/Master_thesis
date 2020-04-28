@@ -36,6 +36,9 @@ function [best_point, best_rho] = nelder_mead_ms(type, n, ranges, starts, iterat
     
     for multi_start = 1:starts
         co_eff_mat = [1, 2, 0.5, 0.5]; %[reflection, expansion, contraction, shrinkgae]
+%         co_eff_mat = [4, 8, 2, 2]; %[reflection, expansion, contraction, shrinkgae]
+        fprintf("The reflection, expansion, contraction and shrinkage co-efficients used are: [%d, %d, %d, %d]\n", co_eff_mat(1), co_eff_mat(2), co_eff_mat(3), co_eff_mat(4));
+        fprintf("In case you want to change them, the assignment is done in nelder_mead_ms.m\n")
         S = sobol_set(((n+1)*(multi_start-1) +1):(n+1)*multi_start,:);
         [single_best_point, single_best_rho, single_eval, optimum] = nelder_mead(type, S, iterations, objective_choice, ranges, limits, co_eff_mat);
         

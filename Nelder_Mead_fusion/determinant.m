@@ -3,7 +3,7 @@
 % Inputs: type of the mechanism (2UPS or 2PUS)
 % Outpus: symbolic determinant
 
-function det_sym = determinant(type)
+function det_sym= determinant(type)
     
     if type == "2UPS"
         det_sym = determinant_UPS();

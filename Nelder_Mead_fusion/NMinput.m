@@ -11,7 +11,7 @@
 % 6. The choice of objective function
 % 7. Availability of the sobolset function (to generate low discrepancy points)
 
-function [type, n, ranges, starts, iterations, limits, objective_choice, sobol_var] = NMinput()
+function [type, n, ranges, starts, iterations, limits, objective_choice, sobol_var, reward] = NMinput()
     
     % Defining the configuration of the mechanism 
     prompt_type = 'Input the type of mechanism you want to optimise\n';
@@ -117,4 +117,14 @@ function [type, n, ranges, starts, iterations, limits, objective_choice, sobol_v
         fprintf('WARNING: Invalid input, treating as 0\n');
         sobol_var = 0;
     end
+    % Taking input for the reward type
+    prompt_reward = 'Type of reward function("binary", "linear", "invert")\n';
+    reward = input(prompt_reward);
+    if reward == "binary" || reward == "linear" || reward == "invert"
+        fprintf("\n");
+    else
+        fprintf('WARNING: Invalid input, treating as binary reward\n');
+        reward = "binary";
+    end
+    
 end

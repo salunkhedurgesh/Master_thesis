@@ -8,7 +8,7 @@
 % 1. evaluation of the objective function for given set of parameters
 % 2. optimised actuator range
 
-function [c_qual,rho_vec] = objective_function_workspace(type, parameters, limits)
+function [c_qual,rho_vec] = objective_function_workspace(type, parameters, limits, reward)
     
     valid_iter = 1;
     [rho1_range,rho2_range] = rho_range(type, parameters);
@@ -17,9 +17,9 @@ function [c_qual,rho_vec] = objective_function_workspace(type, parameters, limit
     for alpha = -1 : 0.01 :1
         for beta = -1 :0.01 :1
             
-            [det_var, p_lim_uni, p_lim_sph, rho_inst] = constraints(type, parameters, limits, alpha, beta);
+            [det_val, p_lim_uni, p_lim_sph1, p_lim_sph2, rho_inst] = constraints(type, parameters, limits, alpha, beta, reward);
             %Singularity check
-            if det_var == "singular"
+            if abs(det_val) < 0.005
                 c_qual = inf;
                 break; %If any instance(alpha,beta) is singular, then the parameter is not useful
             end   
@@ -32,7 +32,7 @@ function [c_qual,rho_vec] = objective_function_workspace(type, parameters, limit
             end
             
             %Passive limit - Spherical joints
-            if p_lim_sph(1) == 0 || p_lim_sph(2) == 0
+            if p_lim_sph1(1) == 0 || p_lim_sph1(2) == 0 || p_lim_sph2(1) == 0 || p_lim_sph2(2) == 0 
                 %If any instance(alpha,beta) does not satisfy passive limits of 
                 %the spherical joint then skip that iteration and evaluate the quality as '0'
                 continue;

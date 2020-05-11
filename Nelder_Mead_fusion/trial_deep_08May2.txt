@@ -1,0 +1,116 @@
+The type of mechanism optimised is 2UPS
+The dimension of the optimisation is 13, the number of starts are 5
+The number of iterations if same solution is encountered is 25 
+The limits on universal joint is 45 degrees, spherical joint is 45 degrees and the stroke ration for actuators is 1.500000e+00 
+The objective function aims to calculate workspace design 
+The ranges for the parameters are: 
+
+Parameter 1: [0.25 1.50] 
+Parameter 2: [-1.75 1.75] 
+Parameter 3: [-0.10 0.10] 
+Parameter 4: [0.25 2.00] 
+Parameter 5: [-1.75 1.75] 
+Parameter 6: [-0.50 0.50] 
+Parameter 7: [0.25 1.50] 
+Parameter 8: [-1.75 1.75] 
+Parameter 9: [-0.10 0.10] 
+Parameter 10: [0.25 2.00] 
+Parameter 11: [-1.75 1.75] 
+Parameter 12: [-0.50 0.50] 
+Parameter 13: [1.00 4.00] 
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 1.117908, 	
+Parameter 2 = 1.745329, 	
+Parameter 3 = 0.041899, 	
+Parameter 4 = 0.652033, 	
+Parameter 5 = -1.515549, 	
+Parameter 6 = -0.028371, 	
+Parameter 7 = 1.184622, 	
+Parameter 8 = 0.030081, 	
+Parameter 9 = -0.095742, 	
+Parameter 10 = 0.636790, 	
+Parameter 11 = 0.702216, 	
+Parameter 12 = 0.026220, 	
+Parameter 13 = 3.047651, 	
+The actuator ranges are: 2.820807 	3.849118 	2.726037 	3.851126 	
+The evaluation at this point is -9.331661e+05 
+The mean iteration time is 200.81 seconds
+
+The percentage of feasible workspace is 99.41 % 
+
+Best point yet is: 1.117908 	1.745329 	0.041899 	0.652033 	-1.515549 	-0.028371 	1.184622 	0.030081 	-0.095742 	0.636790 	0.702216 	0.026220 	3.047651 	
+The actuator range is: 2.820807 	3.849118 	2.726037 	3.851126 	
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 0.993684, 	
+Parameter 2 = -0.659554, 	
+Parameter 3 = -0.015481, 	
+Parameter 4 = 0.493870, 	
+Parameter 5 = -0.736221, 	
+Parameter 6 = 0.153831, 	
+Parameter 7 = 1.500000, 	
+Parameter 8 = -0.221016, 	
+Parameter 9 = 0.019131, 	
+Parameter 10 = 0.695132, 	
+Parameter 11 = 0.914836, 	
+Parameter 12 = 0.218073, 	
+Parameter 13 = 2.230540, 	
+The actuator ranges are: 1.980152 	2.970228 	2.189767 	3.284651 	
+The evaluation at this point is -8.144800e+05 
+The mean iteration time is 187.36 seconds
+
+The percentage of feasible workspace is 89.28 % 
+
+Best point yet is: 1.117908 	1.745329 	0.041899 	0.652033 	-1.515549 	-0.028371 	1.184622 	0.030081 	-0.095742 	0.636790 	0.702216 	0.026220 	3.047651 	
+The actuator range is: 2.820807 	3.849118 	2.726037 	3.851126 	
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 1.322084, 	
+Parameter 2 = -0.391294, 	
+Parameter 3 = -0.061061, 	
+Parameter 4 = 0.509691, 	
+Parameter 5 = -0.486196, 	
+Parameter 6 = 0.121203, 	
+Parameter 7 = 1.025726, 	
+Parameter 8 = 1.610345, 	
+Parameter 9 = 0.019940, 	
+Parameter 10 = 0.775740, 	
+Parameter 11 = 1.192297, 	
+Parameter 12 = 0.118199, 	
+Parameter 13 = 3.462912, 	
+The actuator ranges are: 3.285139 	4.927709 	2.868136 	4.302203 	
+The evaluation at this point is -8.983361e+05 
+The mean iteration time is 190.48 seconds
+
+The percentage of feasible workspace is 97.70 % 
+
+Best point yet is: 1.117908 	1.745329 	0.041899 	0.652033 	-1.515549 	-0.028371 	1.184622 	0.030081 	-0.095742 	0.636790 	0.702216 	0.026220 	3.047651 	
+The actuator range is: 2.820807 	3.849118 	2.726037 	3.851126 	
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 1.086408, 	
+Parameter 2 = 1.615875, 	
+Parameter 3 = 0.000229, 	
+Parameter 4 = 1.152769, 	
+Parameter 5 = -1.695515, 	
+Parameter 6 = 0.199382, 	
+Parameter 7 = 1.500000, 	
+Parameter 8 = -0.479274, 	
+Parameter 9 = -0.019253, 	
+Parameter 10 = 0.902353, 	
+Parameter 11 = -0.167528, 	
+Parameter 12 = 0.122665, 	
+Parameter 13 = 3.917456, 	
+The actuator ranges are: 3.487571 	5.231357 	3.381777 	5.072666 	
+The evaluation at this point is -9.132136e+05 
+The mean iteration time is 196.05 seconds
+
+The percentage of feasible workspace is 99.47 % 
+
+Best point yet is: 1.117908 	1.745329 	0.041899 	0.652033 	-1.515549 	-0.028371 	1.184622 	0.030081 	-0.095742 	0.636790 	0.702216 	0.026220 	3.047651 	
+The actuator range is: 2.820807 	3.849118 	2.726037 	3.851126 	

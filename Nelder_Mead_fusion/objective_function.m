@@ -9,11 +9,12 @@
 % 1. evaluation of the objective function for given set of parameters
 % 2. optimised actuator range
 
-function [c_qual, rho_vec] = objective_function(type, objective_choice, parameters, limits)
+function [c_qual, rho_vec] = objective_function(type, objective_choice, parameters, limits, reward)
     
     if objective_choice == "workspace"
-        [c_qual,rho_vec] = objective_function_workspace(type, parameters, limits);
+        [c_qual,rho_vec] = objective_function_live(type, parameters, limits, reward);
+%         fprintf("Live objective function in use\n");
     elseif objective_choice == "compact"
-        [c_qual,rho_vec] = objective_function_compact(type, parameters, limits);
+        [c_qual,rho_vec] = objective_function_compact(type, parameters, limits, reward);
     end
 end

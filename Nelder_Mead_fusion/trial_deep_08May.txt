@@ -1,0 +1,44 @@
+The type of mechanism optimised is 2UPS
+The dimension of the optimisation is 13, the number of starts are 1
+The number of iterations if same solution is encountered is 25 
+The limits on universal joint is 45 degrees, spherical joint is 45 degrees and the stroke ration for actuators is 1.500000e+00 
+The objective function aims to calculate workspace design 
+The ranges for the parameters are: 
+
+Parameter 1: [0.25 1.50] 
+Parameter 2: [-1.75 1.75] 
+Parameter 3: [-0.10 0.10] 
+Parameter 4: [0.25 2.00] 
+Parameter 5: [-1.75 1.75] 
+Parameter 6: [-0.50 0.50] 
+Parameter 7: [0.25 1.50] 
+Parameter 8: [-1.75 1.75] 
+Parameter 9: [-0.10 0.10] 
+Parameter 10: [0.25 2.00] 
+Parameter 11: [-1.75 1.75] 
+Parameter 12: [-0.50 0.50] 
+Parameter 13: [1.00 4.00] 
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 0.256657, 	
+Parameter 2 = -1.049143, 	
+Parameter 3 = -0.040121, 	
+Parameter 4 = 0.737343, 	
+Parameter 5 = -1.633099, 	
+Parameter 6 = 0.012739, 	
+Parameter 7 = 0.250108, 	
+Parameter 8 = 0.976569, 	
+Parameter 9 = 0.065778, 	
+Parameter 10 = 0.727062, 	
+Parameter 11 = 0.427720, 	
+Parameter 12 = 0.024292, 	
+Parameter 13 = 3.939072, 	
+The actuator ranges are: 3.350070 	4.627235 	3.265890 	4.527819 	
+The evaluation at this point is -9.335464e+05 
+The mean iteration time is 167.72 seconds
+
+The percentage of feasible workspace is 99.93 % 
+
+Best point yet is: 0.256657 	-1.049143 	-0.040121 	0.737343 	-1.633099 	0.012739 	0.250108 	0.976569 	0.065778 	0.727062 	0.427720 	0.024292 	3.939072 	
+The actuator range is: 3.350070 	4.627235 	3.265890 	4.527819 	

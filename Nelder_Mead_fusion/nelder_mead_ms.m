@@ -9,7 +9,7 @@
 % 5. limit for the joints
 % 6. sobolset functionality
 
-function [best_point, best_rho] = nelder_mead_ms(type, n, ranges, starts, iterations, limits, objective_choice, sobol_var, save_files)
+function [best_point, best_rho] = nelder_mead_ms(type, n, ranges, starts, iterations, limits, objective_choice, sobol_var, save_files, reward)
     
     fprintf('Opening file named %s for storing the deep analysis of the multi-start optimisation \n', save_files(1));
     deep_fileID = fopen(save_files(1),'w');
@@ -35,14 +35,18 @@ function [best_point, best_rho] = nelder_mead_ms(type, n, ranges, starts, iterat
     multi_eval = 0;
     
     for multi_start = 1:starts
+        fprintf("Live objective function in use\n");
         co_eff_mat = [1, 2, 0.5, 0.5]; %[reflection, expansion, contraction, shrinkgae]
-%         co_eff_mat = [4, 8, 2, 2]; %[reflection, expansion, contraction, shrinkgae]
-        fprintf("The reflection, expansion, contraction and shrinkage co-efficients used are: [%d, %d, %d, %d]\n", co_eff_mat(1), co_eff_mat(2), co_eff_mat(3), co_eff_mat(4));
+        fprintf("The reflection, expansion, contraction and shrinkage co-efficients used are: [%d, %d, %0.2f, %0.2f]\n", co_eff_mat(1), co_eff_mat(2), co_eff_mat(3), co_eff_mat(4));
         fprintf("In case you want to change them, the assignment is done in nelder_mead_ms.m\n")
         S = sobol_set(((n+1)*(multi_start-1) +1):(n+1)*multi_start,:);
-        [single_best_point, single_best_rho, single_eval, optimum] = nelder_mead(type, S, iterations, objective_choice, ranges, limits, co_eff_mat);
         
-        print_single_nm(deep_fileID, single_best_point, single_best_rho, single_eval, iterations, optimum);
+        [single_best_point, single_best_rho, single_eval, optimum, mean_iter_time] = nelder_mead(type, S, iterations, objective_choice, ranges, limits, co_eff_mat, reward);
+        plot_code(single_best_point);
+        [c_qual_one, ~] = objective_function(type, "workspace", single_best_point, limits, "binary");
+        plot_valid(type, single_best_point, limits, "binary", single_best_rho)
+        
+        print_single_nm(deep_fileID, single_best_point, single_best_rho, single_eval, iterations, optimum, mean_iter_time, c_qual_one);
         
         % Post single start
         saved_S_eval(multi_start,:) = [single_best_point, single_eval];
@@ -69,7 +73,7 @@ function [best_point, best_rho] = nelder_mead_ms(type, n, ranges, starts, iterat
     % Saving the points file
     
     fprintf('Opening a file named %s to save all the optimised points with different starting simplex \n \n', save_files(2));
-    points_fileID = fopen(save_files(2),'a');
+    points_fileID = fopen(save_files(2),'w');
     fprintf(points_fileID, 'The type of mechanism optimised is %s\n', type);
     fprintf(points_fileID, 'The dimension of the optimisation is %d, the number of starts are %d\n', n, starts);
     fprintf(points_fileID, 'The number of iterations if same solution is encountered is %d \n', iterations);

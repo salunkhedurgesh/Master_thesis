@@ -25,6 +25,7 @@ function det_sym = determinant_UPS()
     j12 = diff(rho1, delta);
     j21 = diff(rho2, theta);
     j22 = diff(rho2, delta);
+    jac_mat = [j11, j12; j21, j22];
     
     determinant = j11*j22 - j12*j21;
     

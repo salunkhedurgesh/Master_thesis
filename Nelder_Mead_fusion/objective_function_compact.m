@@ -30,7 +30,7 @@ function [c_qual,rho_vec] = objective_function_compact(type, parameters, limits)
         parameter_weight = ((a1 + a_prime1)*(t)*(a1/a_prime1)) + ((a2 + a_prime2)*(t)*(a2/a_prime2)) + influencer;
     elseif type == "2PUS"
         offset = parameters(5);
-        warning("Attention!! Check the parameter assignment in objective_function_compact.m");
+        fprintf("Attention!! Check the parameter assignment in objective_function_compact.m \n");
         parameter_weight = ((offset + a_prime)*(a)) + influencer;
     else
         fprintf("Invalid type, treating the mechanism as ''2UPS''\n");

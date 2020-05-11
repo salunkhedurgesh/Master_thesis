@@ -13,11 +13,11 @@
 % 2. [1 x 2] boolean vector for passive universal joint of both legs
 % 3. [1 x 2] boolean vector for passive spherical joint of both legs
 
-function [det_var, p_lim_uni, p_lim_sph, rho_inst] = constraints(type, parameters, limits, alpha, beta)
+function [det_val, p_lim_uni, p_lim_sph1, p_lim_sph2, rho_inst, collision_dist, conditioning_num] = constraints(type, parameters, limits, alpha, beta, reward)
     
     if type == "2UPS"
-        [det_var, p_lim_uni, p_lim_sph, rho_inst] = constraints_UPS(parameters, limits, alpha, beta);
+        [det_val, p_lim_uni, p_lim_sph1, p_lim_sph2, rho_inst, collision_dist, conditioning_num] = constraints_UPS(parameters, limits, alpha, beta, reward);
     elseif type == "2PUS"
-        [det_var, p_lim_uni, p_lim_sph, rho_inst] = constraints_PUS(parameters, limits, alpha, beta);
+        [det_val, p_lim_uni, p_lim_sph1, p_lim_sph2, rho_inst, collision_dist, conditioning_num] = constraints_PUS(parameters, limits, alpha, beta, reward);
     end
 end

@@ -1,0 +1,31 @@
+The type of mechanism optimised is 2UPS
+The dimension of the optimisation is 13, the number of starts are 5
+The number of iterations if same solution is encountered is 25 
+The limits on universal joint is 45 degrees, spherical joint is 45 degrees and the stroke ration for actuators is 1.500000e+00 
+The objective function aims to calculate workspace design 
+The ranges for the parameters are: 
+
+
+ The parameters for start 1 are:
+0.778993 	0.857999 	-0.032309 	0.651159 	-1.232845 	0.117284 	0.781598 	-1.222688 	0.012899 	0.579688 	0.104584 	0.010962 	3.015013 	
+The evaluation for this parameters is: -40399.000000 
+
+ The parameters for start 2 are:
+0.250000 	-1.020770 	0.056757 	0.415695 	-1.745329 	-0.005922 	1.500000 	-1.745329 	-0.052832 	0.250000 	-0.279040 	0.016783 	3.630844 	
+The evaluation for this parameters is: -40401.000000 
+
+ The parameters for start 3 are:
+1.336487 	1.551617 	0.000008 	0.693315 	-1.495378 	0.040930 	0.292692 	-0.763867 	0.086776 	0.688517 	-0.911151 	0.049637 	3.421953 	
+The evaluation for this parameters is: -40313.000000 
+
+ The parameters for start 4 are:
+0.378693 	-0.335077 	-0.055242 	0.912077 	0.538810 	0.382331 	1.024550 	-0.955584 	0.055060 	0.835020 	1.745329 	0.035587 	3.795009 	
+The evaluation for this parameters is: -38163.000000 
+
+ The parameters for start 5 are:
+1.092180 	0.940058 	0.011925 	0.954211 	-1.512250 	0.225067 	1.183688 	-0.211649 	0.090455 	0.290046 	1.098082 	-0.025353 	3.653545 	
+The evaluation for this parameters is: -40321.000000 
+
+The best point before refining is:
+0.250000 	-1.020770 	0.056757 	0.415695 	-1.745329 	-0.005922 	1.500000 	-1.745329 	-0.052832 	0.250000 	-0.279040 	0.016783 	3.630844 	With evaluation -40401.000000 
+The total time elapsed for comple operation is 9 hours 42 minutes and 16.1 seconds

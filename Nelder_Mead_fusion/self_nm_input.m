@@ -12,7 +12,7 @@
 % 7. Availability of the sobolset function (to generate low discrepancy points)
 % 8. filenames where the data is stored for the optimisation process
 
-function [type, n, ranges, starts, iterations, limits, objective_choice, sobol_var, save_files, reward] = self_nm_input()
+function [type, n, ranges, starts, iterations, limits, objective_choice, sobol_var, save_files, reward, maximize] = self_nm_input()
 
 type = "2UPS";
 n = 13;
@@ -43,22 +43,27 @@ ranges = [0.25, 1.5;
     -pi/2-deg2rad(10), pi/2+deg2rad(10);
     -0.5, 0.5;
     1, 4];
-starts = 5;
+starts = 2;
 iterations = 25;
-limits = [45, 45, 1.5];
+limits = [45, 45, 1.5, 0.3]; %[universal_joint, spherical_joint, stroke_ratio, minimum_quality_index]
 objective_choice = "workspace";
 sobol_var = 1;
-save_files = ["trial_deep_09May.txt", "trial_points_09May.txt"];
-reward = "linear";
-
+format shortg
+save_files = record_file();
+reward = "binary";
+maximize = "inner_conditioning";%"joint_quality"; %"conditioning_number";
+format shortg
 fprintf('The mechanism is of type %s with dimension %d\nThe number of starts are %d\n', type, n, starts);
 fprintf('The number of iterations to continue for same solution are %d \n', iterations);
 fprintf('Universal limit = %d degrees, Spherical limits = %d degrees, ratio of actuator stroke = %0.2f \n', limits(1), limits(2), limits(3));
 fprintf('The mechanism is being optimised for %s with %s rewarding function\n', objective_choice, reward);
+fprintf('The %s is also being maximized along with the workspace \n', maximize);
 if sobol_var == 0
     fprintf('Sobolset functionality is not used \n');
 else
     fprintf('Sobolset functionality is used to generate low discrepancy points for multi start \n');
 end
-fprintf('The file names are %s and %s. Both are opened in write mode \n', save_files(1), save_files(2));
+c = clock;
+foldername = num2str(c(3)) + "_" + num2str(c(2));
+fprintf('The file names are %s and %s saved in %s folder. Both are opened in write mode \n', save_files(1), save_files(2), foldername);
 end

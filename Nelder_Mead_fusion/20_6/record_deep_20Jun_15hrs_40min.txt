@@ -1,0 +1,45 @@
+Changed the inner box to 0.8 x 0.8, realising that 0.7 x 0.7 is just 49% of the original size, an interseting development has been the collision constraint, it has shown us that human intuition is near optimized though not completely optimized
+The type of mechanism optimised is 2UPS
+The dimension of the optimisation is 13, the number of starts are 5
+The number of iterations if same solution is encountered is 26 
+The limits on universal joint is 45 degrees, spherical joint is 45 degrees and the stroke ration for actuators is 1.500000e+00 
+The objective function aims to calculate workspace design 
+The ranges for the parameters are: 
+
+Parameter 1: [0.25 1.50] 
+Parameter 2: [-1.75 1.75] 
+Parameter 3: [-0.10 0.10] 
+Parameter 4: [0.25 2.00] 
+Parameter 5: [-1.75 1.75] 
+Parameter 6: [-0.50 0.50] 
+Parameter 7: [0.25 1.50] 
+Parameter 8: [-1.75 1.75] 
+Parameter 9: [-0.10 0.10] 
+Parameter 10: [0.25 2.00] 
+Parameter 11: [-1.75 1.75] 
+Parameter 12: [-0.50 0.50] 
+Parameter 13: [1.00 4.00] 
+
+The simplex stopped after 26 iterations 
+
+Parameter 1 = 0.538354, 	
+Parameter 2 = -0.907286, 	
+Parameter 3 = 0.068602, 	
+Parameter 4 = 1.484385, 	
+Parameter 5 = 0.117059, 	
+Parameter 6 = 0.394167, 	
+Parameter 7 = 1.094996, 	
+Parameter 8 = 1.341383, 	
+Parameter 9 = -0.032152, 	
+Parameter 10 = 1.342632, 	
+Parameter 11 = 1.741098, 	
+Parameter 12 = 0.019070, 	
+Parameter 13 = 3.595084, 	
+The actuator ranges are: 3.344971 	5.017457 	
+The evaluation at this point is -6.589622e+04 
+The mean iteration time is 218.72 seconds
+
+The percentage of feasible workspace is 51.17 % 
+
+Best point yet is: 0.538354 	-0.907286 	0.068602 	1.484385 	0.117059 	0.394167 	1.094996 	1.341383 	-0.032152 	1.342632 	1.741098 	0.019070 	3.595084 	
+The actuator range is: 3.344971 	5.017457 	

@@ -1,4 +1,4 @@
-function [rho, p_lim_u1, p_lim_s1, p_lim_s2] = leg_ikin(in_origin_t, in_origin_u, in_origin_s, in_origin_s_initial, in_t_s12_initial, limits, reward)
+function [rho, p_lim_u1, p_lim_s1, p_lim_s2] = leg_ikin(in_origin_t, in_origin_u, in_origin_s, in_origin_s_initial, in_t_s12_initial, limits, alpha, beta)
 
 in_origin_x = [1; 0; 0];
 % in_origin_y = [0; 1; 0];
@@ -44,7 +44,7 @@ torsion_align_vec2_u11 = transpose(u11_align_tilt_mat) * wrt_origin_y_in_u11;
 u11_align_torsion_axis = cross(torsion_align_vec1_u11, torsion_align_vec2_u11);
 if norm(abs(u11_align_torsion_axis)/norm(u11_align_torsion_axis) - [0; 0; 1]) > 0.00001
     if norm(u11_align_torsion_axis) ~= 0
-        fprintf("Torsion axis of the universal joint may be a problem, check IKIN \n");
+        fprintf("Torsion axis of the universal joint may be a problem, check IKIN for %.2d, %.2d\n", alpha, beta);
     end
 end
 
@@ -87,9 +87,12 @@ temp_vec = cross((in_origin_t - in_origin_s12_initial), in_origin_t);
 torsion_align_vec2_s12 = transpose(s12_align_tilt_mat) * wrt_s12_unrot_T_of_origin(1:3, 1:3) * temp_vec;
 
 s12_align_torsion_axis = cross(torsion_align_vec1_s12, torsion_align_vec2_s12(1:3));
+if norm(s12_align_torsion_axis) < 0.00001
+    s12_align_torsion_axis = [1; 0; 0];
+end
 if norm(abs(s12_align_torsion_axis)/norm(s12_align_torsion_axis) - [1; 0; 0]) > 0.00001
-    if norm(s12_align_torsion_axis) ~= 0
-        fprintf("Torsion axis of the spherical joint may be a problem, check IKIN \n");
+    if norm(s12_align_torsion_axis) < 0.00001
+        fprintf("Torsion axis of the spherical joint may be a problem, check IKIN for %.2f and %.2f \n", alpha, beta);
     end
 end
 % s12_align_torsion_angle = torsion_angle(torsion_align_vec1_s12, torsion_align_vec2_s12);
@@ -140,13 +143,7 @@ u_joint_z = u11_tilt_mat * in_origin_z;
 if abs(u_joint_x(2)) > sind(limits(1)) || abs(u_joint_z(2)) > sind(limits(1))
     p_lim_u1 = 0;
 else
-    if reward == "linear"
-    p_lim_u1 = (sind(limits(1)) - abs(u_joint_x(2)) + sind(limits(1)) - abs(u_joint_z(2)))/sind(limits(1)) + 2;
-    elseif reward == "invert"
-        dist1 = abs(u_joint_x(2))/sind(limits(1));
-        dist2 = abs(u_joint_z(2))/sind(limits(1));
-        p_lim_u1 = (1/dist1 + 0.2) + (1/dist2 + 0.2);
-    end
+    p_lim_u1 = 2*sind(limits(1)) - (abs(u_joint_x(2)) + abs(u_joint_z(2)));
 end
 
 s_joint_x = s12_tilt_mat * in_origin_x;
@@ -154,13 +151,7 @@ s_joint_z = s12_tilt_mat * in_origin_z;
 if abs(s_joint_x(2)) > sind(limits(2)) || abs(s_joint_z(2)) > sind(limits(2))
     p_lim_s1 = 0;
 else
-    if reward == "linear"
-    p_lim_s1 = (sind(limits(2)) - abs(s_joint_x(2)) + sind(limits(2)) - abs(s_joint_z(2)))/sind(limits(2)) + 2;
-    elseif reward == "invert"
-        dist1s = abs(s_joint_x(2))/sind(limits(2));
-        dist2s = abs(s_joint_z(2))/sind(limits(2));
-        p_lim_s1 = (1/dist1s + 0.2) + (1/dist2s + 0.2);
-    end
+    p_lim_s1 = 2*sind(limits(2)) - (abs(s_joint_x(2)) + abs(s_joint_z(2)));
 end
 
 s_joint_x = s12_tilt_mat * s12_torsion_mat * in_origin_x;
@@ -168,13 +159,7 @@ s_joint_z = s12_tilt_mat * s12_torsion_mat * in_origin_z;
 if abs(s_joint_x(2)) > sind(limits(2)) || abs(s_joint_z(2)) > sind(limits(2))
     p_lim_s2 = 0;
 else
-    if reward == "linear"
-    p_lim_s2 = (sind(limits(2)) - abs(s_joint_x(2)) + sind(limits(2)) - abs(s_joint_z(2)))/sind(limits(2)) + 2;
-    elseif reward == "invert"
-        dist1s = abs(s_joint_x(2))/sind(limits(2));
-        dist2s = abs(s_joint_z(2))/sind(limits(2));
-        p_lim_s2 = (1/dist1s + 0.2) + (1/dist2s + 0.2);
-    end
+    p_lim_s2 = 2*sind(limits(2)) - (abs(s_joint_x(2)) + abs(s_joint_z(2)));
 end
 
 end

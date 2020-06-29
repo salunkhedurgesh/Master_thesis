@@ -85,7 +85,7 @@ function [] = plot_code(parameters)
     %axis([-1 a+0.3 -a-0.8 a+0.3 -0.2 h+t+0.5]);
     view(135,40);
 
-figure(2)
+figure()
     alpha = 0;
     beta = 0;
     [u11, u21, s12, s22, h1_point, h2_point, t_point, x_plus, x_minus, y_plus, y_minus] = plot_para(parameters, alpha, beta);

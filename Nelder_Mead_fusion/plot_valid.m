@@ -8,7 +8,7 @@
 % 1. evaluation of the objective function for given set of parameters
 % 2. optimised actuator range
 
-function [] = plot_valid(type, parameters, limits, reward, rho_range)
+function [] = plot_valid(type, parameters, limits, rho_range)
 
 valid_iter = 1;
 c_qual_only_joint = 0;
@@ -22,8 +22,8 @@ sinvalid22 = 1;
 rinvalid1 = 1;
 rinvalid2 = 1;
 
-p_uni1_invalid(1,:) = [-2, 2];
-p_uni2_invalid(1,:) = [-2, 2];
+p_uni1_invalid(1,:) = [-3, -3];
+p_uni2_invalid(1,:) = [-3, -3];
 p_sph11_invalid(1,:) = [-2, 2];
 p_sph12_invalid(1,:) = [-2, 2];
 p_sph21_invalid(1,:) = [-2, 2];
@@ -37,7 +37,8 @@ colv = 1;
 for beta = 3 : -0.1 : -3
     for alpha = -3 : 0.1 : 3
 
-        [~, p_lim_uni, p_lim_sph1, p_lim_sph2, rho_inst, ~, cn] = constraints(type, parameters, limits, alpha, beta, reward);
+        [~, p_lim_uni, p_lim_sph1, p_lim_sph2, rho_inst, ~, qual] = constraints(type, parameters, limits, alpha, beta, min(rho_range));
+        cn = qual(1);
         cnum(rowv, colv) = cn;
         colv = colv+1;
         %Passive limit - Universal joints
@@ -90,7 +91,7 @@ for beta = 3 : -0.1 : -3
             rinvalid1 = rinvalid1 + 1;
         end
         
-        if rho_inst(2) < rho_range(3) || rho_inst(2) > rho_range(4)
+        if rho_inst(2) < rho_range(1) || rho_inst(2) > rho_range(2)
             rho2_invalid(rinvalid2, 1:2) = [alpha, beta];
             rinvalid2 = rinvalid2 + 1;
         end
@@ -125,16 +126,16 @@ figure()
     xlabel('circle - Universal joints, cross - Spherical joint, points - Actuators','FontSize',12);
     hold on;
     plot(p_uni2_invalid(:,1),p_uni2_invalid(:,2), 'om');
-    plot(p_sph11_invalid(:,1),p_sph11_invalid(:,2), 'xc');
-    plot(p_sph12_invalid(:,1),p_sph12_invalid(:,2), 'xm');
-    plot(p_sph21_invalid(:,1),p_sph21_invalid(:,2), 'xc');
-    plot(p_sph22_invalid(:,1),p_sph22_invalid(:,2), 'xm');
+    plot(p_sph11_invalid(:,1),p_sph11_invalid(:,2), '.c');
+    plot(p_sph12_invalid(:,1),p_sph12_invalid(:,2), '.m');
+    plot(p_sph21_invalid(:,1),p_sph21_invalid(:,2), '.c');
+    plot(p_sph22_invalid(:,1),p_sph22_invalid(:,2), '.m');
     plot(rho1_invalid(:,1),rho1_invalid(:,2), '.r');
     plot(rho2_invalid(:,1),rho2_invalid(:,2), '.b');
     plot([-1,1,1,-1,-1],[1,1,-1,-1,1], 'k', 'LineWidth', 2);
     fimplicit(@(alpha,beta) ((2*abs(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))*sign(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))*(s22y*cos(alpha) - s22z*cos(beta)*sin(alpha) + s22x*sin(alpha)*sin(beta)) + 2*abs(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))*sign(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))*(s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta)))*(2*abs(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))*sign(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))*(s12x*cos(beta)*sin(alpha) + s12z*sin(alpha)*sin(beta)) + 2*abs(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))*sign(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))*(s12x*cos(alpha)*cos(beta) + s12z*cos(alpha)*sin(beta)) - 2*abs(s12x*cos(beta) - u11x + s12z*sin(beta))*sign(s12x*cos(beta) - u11x + s12z*sin(beta))*(s12z*cos(beta) - s12x*sin(beta))))/(4*(abs(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))^2 + abs(s12x*cos(beta) - u11x + s12z*sin(beta))^2 + abs(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))^2)^(1/2)*(abs(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))^2 + abs(s22x*cos(beta) - u21x + s22z*sin(beta))^2 + abs(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))^2)^(1/2)) - ((2*abs(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))*sign(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))*(s12y*cos(alpha) - s12z*cos(beta)*sin(alpha) + s12x*sin(alpha)*sin(beta)) + 2*abs(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))*sign(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))*(s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta)))*(2*abs(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))*sign(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))*(s22x*cos(beta)*sin(alpha) + s22z*sin(alpha)*sin(beta)) + 2*abs(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))*sign(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))*(s22x*cos(alpha)*cos(beta) + s22z*cos(alpha)*sin(beta)) - 2*abs(s22x*cos(beta) - u21x + s22z*sin(beta))*sign(s22x*cos(beta) - u21x + s22z*sin(beta))*(s22z*cos(beta) - s22x*sin(beta))))/(4*(abs(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(alpha)*sin(beta))^2 + abs(s12x*cos(beta) - u11x + s12z*sin(beta))^2 + abs(t - u11z + s12y*sin(alpha) + s12z*cos(alpha)*cos(beta) - s12x*cos(alpha)*sin(beta))^2)^(1/2)*(abs(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(alpha)*sin(beta))^2 + abs(s22x*cos(beta) - u21x + s22z*sin(beta))^2 + abs(t - u21z + s22y*sin(alpha) + s22z*cos(alpha)*cos(beta) - s22x*cos(alpha)*sin(beta))^2)^(1/2)))
     hold off;
     axis([-3 3 -3 3]);
-figure()
-    heatmap(cnum, 'GridVisible','off', 'Colormap',hot);
+
+    %h = hmap(parameters);
 end

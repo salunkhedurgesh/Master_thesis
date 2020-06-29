@@ -6,7 +6,7 @@
 % Outpus:
 % 1. the maximum and minimum actuator lengths over the span of desired RDW
 
-function [rho1_range,rho2_range] = rho_range(type, parameters)
+function [rho1_range,rho2_range] = rho_range_func(type, parameters)
     
     if type == "2UPS"
         [rho1_range,rho2_range] = rho_range_UPS(parameters);

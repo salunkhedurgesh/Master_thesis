@@ -9,8 +9,10 @@
 
 function [c_qual,rho_vec] = objective_function_compact(type, parameters, limits)
     
-    [c_qual,rho_vec] = objective_function_workspace(type, parameters, limits);
-    
+    reward = "binary";
+    maximize = "workspace";
+    [c_qual,rho_vec] = objective_function_live(type, parameters, limits, reward, maximize);
+    actuator_mean = (rho_vec(1) + rho_vec(2))/2;
     influencer = 12;
     
     % This is a very important variable. It decides how much does the
@@ -20,22 +22,36 @@ function [c_qual,rho_vec] = objective_function_compact(type, parameters, limits)
     % with low feasible workspace is not given importance over a relatively
     % larger mechanism with better workspace feasibility
     
-    a1 = norm(parameters(1:3), 2);
-    a_prime1 = norm(parameters(4:6), 2);
-    a2 = norm(parameters(7:9), 2);
-    a_prime2 = norm(parameters(10:12), 2);
+    a1 = parameters(1);
+    a_prime1 = parameters(4);
+    a2 = parameters(7);
+    a_prime2 = parameters(10);
     t = parameters(13);
+    a1p = [a1*cos(parameters(2)), a1*sin(parameters(2))];
+    a_prime1p = [a_prime1*cos(parameters(5)), a_prime1*sin(parameters(5))];
+    a2p = [a2*cos(parameters(8)), a2*sin(parameters(8))];
+    a_prime2p = [a_prime2*cos(parameters(11)), a_prime2*sin(parameters(11))];
+    triangle1_side = norm((a1p-a2p),2);
+    triangle2_side = norm((a_prime1p-a_prime2p),2);
+    s1 = (a1 + a2 + triangle1_side)/2;
+    s2 = (a_prime1 + a_prime2 + triangle2_side)/2;
+    area1 = sqrt(s1*(s1-a1)*(s1-a2)*(s1-triangle1_side));
+    area2 = sqrt(s2*(s2-a_prime1)*(s2-a_prime2)*(s2-triangle2_side));
+    mean_area = (area1 + area2)/2;
     
     if type == "2UPS"
-        parameter_weight = ((a1 + a_prime1)*(t)*(a1/a_prime1)) + ((a2 + a_prime2)*(t)*(a2/a_prime2)) + influencer;
+%         parameter_weight = ((a1 + a_prime1)*(t)*(a1/a_prime1)) + ((a2 + a_prime2)*(t)*(a2/a_prime2)) + influencer;
+        parameter_weight = mean_area * t;
     elseif type == "2PUS"
-        offset = parameters(5);
-        fprintf("Attention!! Check the parameter assignment in objective_function_compact.m \n");
+        warning("Attention!! Check the parameter assignment in objective_function_compact.m \n");
         parameter_weight = ((offset + a_prime)*(a)) + influencer;
     else
         fprintf("Invalid type, treating the mechanism as ''2UPS''\n");
-        parameter_weight = ((a1 + a_prime1)*(t)*(a1/a_prime1)) + ((a2 + a_prime2)*(t)*(a2/a_prime2)) + influencer;
+%         parameter_weight = ((a1 + a_prime1)*(t)*(a1/a_prime1)) + ((a2 + a_prime2)*(t)*(a2/a_prime2)) + influencer;
+        parameter_weight = mean_area * t;
     end
     
-    c_qual = c_qual/parameter_weight;
+    if c_qual > 0.75*40401
+        c_qual = c_qual*(1 + parameter_weight);
+    end
 end

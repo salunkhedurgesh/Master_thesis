@@ -11,7 +11,7 @@
 % 1. [1 x 2] boolean vector for passive universal joint of both legs
 % 2. [1 x 2] boolean vector for passive spherical joint of both legs
 
-function [det_val, p_lim_uni, p_lim_sph1, p_lim_sph2, rho_inst, collision_dist, conditioning_num] = constraints_UPS(parameters, limits, alpha, beta, reward)
+function [det_val, p_lim_uni, p_lim_sph1, p_lim_sph2, rho_inst, collision_dist, quality_indices] = constraints_UPS(parameters, limits, alpha, beta, rho_min)
 % Inverse kinematics of "2UPS - 1U" with SS-joint and spherical orientation
 % such that all the joints are in their default alignment (zero rotation)
 % when alpha = 0 and beta = 0 (the home position of the mechanism)
@@ -42,9 +42,12 @@ j21 = (2*sign(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(beta
 j22 = -(2*abs(t - u21z + s22y*sin(alpha) + s22z*cos(beta)*cos(alpha) - s22x*sin(beta)*cos(alpha))*sign(t - u21z + s22y*sin(alpha) + s22z*cos(beta)*cos(alpha) - s22x*sin(beta)*cos(alpha))*(s22x*cos(beta)*cos(alpha) + s22z*sin(beta)*cos(alpha)) - 2*abs(s22x*cos(beta) - u21x + s22z*sin(beta))*sign(s22x*cos(beta) - u21x + s22z*sin(beta))*(s22z*cos(beta) - s22x*sin(beta)) + 2*sign(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(beta)*sin(alpha))*abs(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(beta)*sin(alpha))*(s22x*cos(beta)*sin(alpha) + s22z*sin(beta)*sin(alpha)))/(2*(abs(t - u21z + s22y*sin(alpha) + s22z*cos(beta)*cos(alpha) - s22x*sin(beta)*cos(alpha))^2 + abs(s22x*cos(beta) - u21x + s22z*sin(beta))^2 + abs(u21y - s22y*cos(alpha) + s22z*cos(beta)*sin(alpha) - s22x*sin(beta)*sin(alpha))^2)^(1/2));
 
 jac_mat = [j11, j12; j21, j22];
+ellipsoid_jac = jac_mat' * jac_mat; %because jac_mat mat is J^(-1)
+vaf = eig(ellipsoid_jac);
 a1 = norm(jac_mat);
 a2 = norm(inv(jac_mat));
 conditioning_num = 1/(a1 * a2);
+quality_indices = [conditioning_num, min(vaf), max(vaf)];
 origin = [0; 0; 0];
 in_origin_x = [1; 0; 0];
 in_origin_y = [0; 1; 0];
@@ -76,9 +79,9 @@ in_origin_s22_initial = wrt_origin_T_of_t_initial * [in_t_s22_initial; 1];
 seg1 = [in_origin_u11';in_origin_s12(1:3)'];
 seg2 = [in_origin_u21';in_origin_s22(1:3)'];
 
-collision_dist = seg_dist(seg1, seg2);
-[rho1, p_lim_u11, p_lim_s121, p_lim_s122] = leg_ikin(in_origin_t, in_origin_u11, in_origin_s12, in_origin_s12_initial, in_t_s12_initial, limits, reward);
-[rho2, p_lim_u21, p_lim_s221, p_lim_s222] = leg_ikin(in_origin_t, in_origin_u21, in_origin_s22, in_origin_s22_initial, in_t_s22_initial, limits, reward);
+collision_dist = seg_dist(seg1, seg2, rho_min);
+[rho1, p_lim_u11, p_lim_s121, p_lim_s122] = leg_ikin(in_origin_t, in_origin_u11, in_origin_s12, in_origin_s12_initial, in_t_s12_initial, limits, alpha, beta);
+[rho2, p_lim_u21, p_lim_s221, p_lim_s222] = leg_ikin(in_origin_t, in_origin_u21, in_origin_s22, in_origin_s22_initial, in_t_s22_initial, limits, alpha, beta);
 
 rho_inst = [rho1, rho2];
 p_lim_uni = [p_lim_u11, p_lim_u21];

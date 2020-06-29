@@ -1,0 +1,69 @@
+Trial run for the first implementation of maximizing velocity amplification factor near to isotropy. We are not using VAF as a constraint but we are using VAF as an objective function, just for observation
+The type of mechanism optimised is 2UPS
+The dimension of the optimisation is 13, the number of starts are 2
+The number of iterations if same solution is encountered is 4 
+The limits on universal joint is 45 degrees, spherical joint is 45 degrees and the stroke ration for actuators is 1.500000e+00 
+The objective function aims to calculate workspace design 
+The ranges for the parameters are: 
+
+Parameter 1: [0.25 1.50] 
+Parameter 2: [-1.75 1.75] 
+Parameter 3: [-0.10 0.10] 
+Parameter 4: [0.25 2.00] 
+Parameter 5: [-1.75 1.75] 
+Parameter 6: [-0.50 0.50] 
+Parameter 7: [0.25 1.50] 
+Parameter 8: [-1.75 1.75] 
+Parameter 9: [-0.10 0.10] 
+Parameter 10: [0.25 2.00] 
+Parameter 11: [-1.75 1.75] 
+Parameter 12: [-0.50 0.50] 
+Parameter 13: [1.00 4.00] 
+
+The simplex stopped after 4 iterations 
+
+Parameter 1 = 1.039736, 	
+Parameter 2 = 0.462997, 	
+Parameter 3 = 0.013291, 	
+Parameter 4 = 1.036928, 	
+Parameter 5 = 0.495861, 	
+Parameter 6 = 0.052572, 	
+Parameter 7 = 0.498530, 	
+Parameter 8 = -1.715155, 	
+Parameter 9 = 0.041409, 	
+Parameter 10 = 1.103438, 	
+Parameter 11 = 1.481608, 	
+Parameter 12 = 0.153538, 	
+Parameter 13 = 3.933054, 	
+The actuator ranges are: 3.335630 	5.003446 	
+The evaluation at this point is -7.898433e+04 
+The mean iteration time is 252.41 seconds
+
+The percentage of feasible workspace is 85.77 % 
+
+Best point yet is: 1.039736 	0.462997 	0.013291 	1.036928 	0.495861 	0.052572 	0.498530 	-1.715155 	0.041409 	1.103438 	1.481608 	0.153538 	3.933054 	
+The actuator range is: 3.335630 	5.003446 	
+
+The simplex stopped after 4 iterations 
+
+Parameter 1 = 0.846199, 	
+Parameter 2 = -1.699389, 	
+Parameter 3 = 0.032500, 	
+Parameter 4 = 0.308987, 	
+Parameter 5 = -1.260131, 	
+Parameter 6 = 0.044441, 	
+Parameter 7 = 0.291832, 	
+Parameter 8 = 0.392133, 	
+Parameter 9 = 0.066783, 	
+Parameter 10 = 1.923867, 	
+Parameter 11 = 0.585670, 	
+Parameter 12 = -0.034341, 	
+Parameter 13 = 2.060184, 	
+The actuator ranges are: 1.876405 	2.814607 	
+The evaluation at this point is -1.707269e+03 
+The mean iteration time is 224.99 seconds
+
+The percentage of feasible workspace is 39.29 % 
+
+Best point yet is: 1.039736 	0.462997 	0.013291 	1.036928 	0.495861 	0.052572 	0.498530 	-1.715155 	0.041409 	1.103438 	1.481608 	0.153538 	3.933054 	
+The actuator range is: 3.335630 	5.003446 	

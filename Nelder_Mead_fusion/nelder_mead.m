@@ -10,7 +10,7 @@
 % 1. optimised set of parameter (highly possible: local minima)
 % 2. optimised actuator range
 
-function [single_best_point, single_best_rho, single_eval, optimum, mean_iter_time] = nelder_mead(type, S, iterations, objective_choice, ranges, limits, co_eff_mat, reward)
+function [single_best_point, single_best_rho, single_eval, optimum, mean_iter_time] = nelder_mead(type, S, iterations, objective_choice, ranges, limits, co_eff_mat, reward, maximize)
 
     iteration = 1;
     prev_min_eval = 0;
@@ -24,7 +24,7 @@ function [single_best_point, single_best_rho, single_eval, optimum, mean_iter_ti
         tic
         evaluations = zeros(n+1,1);
         for i = 1:n+1
-            [evaluations(i), ~] = objective_function(type, objective_choice, S(i,:), limits, reward);
+            [evaluations(i), ~] = objective_function(type, objective_choice, S(i,:), limits, reward, maximize);
         end
         
         [max_eval,max_index] = max(evaluations); %To calculate the point correspoding to the worst evaluation
@@ -96,7 +96,7 @@ function [single_best_point, single_best_rho, single_eval, optimum, mean_iter_ti
         %Reflection : reflect_point = mean_point + reflect_coeff*(mean_point - S(n+1,:))
         reflect_point = mean_point + r_coeff*(mean_point - Sort_S(n+1,:));
         reflect_point = range_respect(reflect_point,ranges);
-        [reflect_evaluation,~] = objective_function(type, objective_choice, reflect_point, limits, reward);
+        [reflect_evaluation,~] = objective_function(type, objective_choice, reflect_point, limits, reward, maximize);
         
         if min_eval < reflect_evaluation && reflect_evaluation < max_eval
             Sort_S(n+1,:) = reflect_point;
@@ -112,7 +112,7 @@ function [single_best_point, single_best_rho, single_eval, optimum, mean_iter_ti
             % e_coeff*r_coeff > r_coeff
             
             expand_point = range_respect(expand_point,ranges);
-            [expand_evaluation, ~] = objective_function(type, objective_choice, expand_point, limits, reward);
+            [expand_evaluation, ~] = objective_function(type, objective_choice, expand_point, limits, reward, maximize);
             
             if expand_evaluation < reflect_evaluation
                 min_eval = expand_evaluation;
@@ -129,7 +129,7 @@ function [single_best_point, single_best_rho, single_eval, optimum, mean_iter_ti
             if second_max_eval < reflect_evaluation && reflect_evaluation < max_eval
                 outside_contract_point = mean_point + k_coeff*(reflect_point-mean_point);
                 outside_contract_point = range_respect(outside_contract_point, ranges);
-                [outside_contract_evaluation,~] = objective_function(type, objective_choice, outside_contract_point, limits, reward);
+                [outside_contract_evaluation,~] = objective_function(type, objective_choice, outside_contract_point, limits, reward, maximize);
                 
                 if outside_contract_evaluation < reflect_evaluation
                     Sort_S(n+1,:) = outside_contract_point;
@@ -145,7 +145,7 @@ function [single_best_point, single_best_rho, single_eval, optimum, mean_iter_ti
             elseif reflect_evaluation > max_eval
                 inside_contract_point = mean_point - k_coeff*(mean_point-Sort_S(n+1,:));
                 inside_contract_point = range_respect(inside_contract_point, ranges);
-                [inside_contract_evaluation, ~] = objective_function(type, objective_choice, inside_contract_point, limits, reward);
+                [inside_contract_evaluation, ~] = objective_function(type, objective_choice, inside_contract_point, limits, reward, maximize);
                 
                 if inside_contract_evaluation < max_eval
                     Sort_S(n+1,:) = inside_contract_point;
@@ -184,7 +184,7 @@ function [single_best_point, single_best_rho, single_eval, optimum, mean_iter_ti
         
     end
     
-    [single_eval, single_best_rho] = objective_function(type, objective_choice, S_min, limits, reward);
+    [single_eval, single_best_rho] = objective_function(type, objective_choice, S_min, limits, reward, maximize);
     single_best_point = S_min;
     
     

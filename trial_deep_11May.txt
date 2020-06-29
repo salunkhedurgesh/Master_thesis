@@ -1,0 +1,140 @@
+The type of mechanism optimised is 2UPS
+The dimension of the optimisation is 13, the number of starts are 5
+The number of iterations if same solution is encountered is 25 
+The limits on universal joint is 45 degrees, spherical joint is 45 degrees and the stroke ration for actuators is 1.500000e+00 
+The objective function aims to calculate workspace design 
+The ranges for the parameters are: 
+
+Parameter 1: [0.25 1.50] 
+Parameter 2: [-1.75 1.75] 
+Parameter 3: [-0.10 0.10] 
+Parameter 4: [0.25 2.00] 
+Parameter 5: [-1.75 1.75] 
+Parameter 6: [-0.50 0.50] 
+Parameter 7: [0.25 1.50] 
+Parameter 8: [-1.75 1.75] 
+Parameter 9: [-0.10 0.10] 
+Parameter 10: [0.25 2.00] 
+Parameter 11: [-1.75 1.75] 
+Parameter 12: [-0.50 0.50] 
+Parameter 13: [1.00 4.00] 
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 1.211717, 	
+Parameter 2 = -0.094537, 	
+Parameter 3 = 0.018336, 	
+Parameter 4 = 1.245376, 	
+Parameter 5 = -0.351874, 	
+Parameter 6 = 0.381452, 	
+Parameter 7 = 0.615759, 	
+Parameter 8 = 0.632414, 	
+Parameter 9 = 0.023981, 	
+Parameter 10 = 1.578984, 	
+Parameter 11 = 1.336906, 	
+Parameter 12 = 0.158349, 	
+Parameter 13 = 3.533407, 	
+The actuator ranges are: 3.042515 	4.563773 	3.356612 	5.034919 	
+The evaluation at this point is -6.588257e+04 
+The mean iteration time is 232.12 seconds
+
+The percentage of feasible workspace is 48.12 % 
+
+Best point yet is: 1.211717 	-0.094537 	0.018336 	1.245376 	-0.351874 	0.381452 	0.615759 	0.632414 	0.023981 	1.578984 	1.336906 	0.158349 	3.533407 	
+The actuator range is: 3.042515 	4.563773 	3.356612 	5.034919 	
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 1.008909, 	
+Parameter 2 = -0.274064, 	
+Parameter 3 = 0.097076, 	
+Parameter 4 = 0.930149, 	
+Parameter 5 = -0.134969, 	
+Parameter 6 = 0.447929, 	
+Parameter 7 = 1.430435, 	
+Parameter 8 = 1.075773, 	
+Parameter 9 = 0.096202, 	
+Parameter 10 = 0.959047, 	
+Parameter 11 = 1.740209, 	
+Parameter 12 = 0.137814, 	
+Parameter 13 = 3.941818, 	
+The actuator ranges are: 3.307789 	4.961683 	3.263930 	4.895896 	
+The evaluation at this point is -1.249418e+05 
+The mean iteration time is 204.19 seconds
+
+The percentage of feasible workspace is 92.92 % 
+
+Best point yet is: 1.008909 	-0.274064 	0.097076 	0.930149 	-0.134969 	0.447929 	1.430435 	1.075773 	0.096202 	0.959047 	1.740209 	0.137814 	3.941818 	
+The actuator range is: 3.307789 	4.961683 	3.263930 	4.895896 	
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 0.603453, 	
+Parameter 2 = -1.514795, 	
+Parameter 3 = -0.037639, 	
+Parameter 4 = 0.905862, 	
+Parameter 5 = -1.609944, 	
+Parameter 6 = 0.375562, 	
+Parameter 7 = 0.896680, 	
+Parameter 8 = -0.170866, 	
+Parameter 9 = -0.001205, 	
+Parameter 10 = 0.966237, 	
+Parameter 11 = 0.002239, 	
+Parameter 12 = 0.274397, 	
+Parameter 13 = 3.647880, 	
+The actuator ranges are: 3.114044 	4.671067 	3.064098 	4.596147 	
+The evaluation at this point is -1.202456e+05 
+The mean iteration time is 218.41 seconds
+
+The percentage of feasible workspace is 95.06 % 
+
+Best point yet is: 1.008909 	-0.274064 	0.097076 	0.930149 	-0.134969 	0.447929 	1.430435 	1.075773 	0.096202 	0.959047 	1.740209 	0.137814 	3.941818 	
+The actuator range is: 3.307789 	4.961683 	3.263930 	4.895896 	
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 1.170897, 	
+Parameter 2 = -0.323387, 	
+Parameter 3 = -0.074360, 	
+Parameter 4 = 1.533986, 	
+Parameter 5 = 0.203449, 	
+Parameter 6 = -0.004158, 	
+Parameter 7 = 0.985906, 	
+Parameter 8 = -1.196659, 	
+Parameter 9 = 0.064553, 	
+Parameter 10 = 1.570058, 	
+Parameter 11 = 1.698153, 	
+Parameter 12 = -0.188646, 	
+Parameter 13 = 3.999346, 	
+The actuator ranges are: 3.598780 	5.398170 	3.722773 	5.584159 	
+The evaluation at this point is -8.484777e+04 
+The mean iteration time is 244.74 seconds
+
+The percentage of feasible workspace is 58.84 % 
+
+Best point yet is: 1.008909 	-0.274064 	0.097076 	0.930149 	-0.134969 	0.447929 	1.430435 	1.075773 	0.096202 	0.959047 	1.740209 	0.137814 	3.941818 	
+The actuator range is: 3.307789 	4.961683 	3.263930 	4.895896 	
+
+The simplex stopped after 25 iterations 
+
+Parameter 1 = 1.351916, 	
+Parameter 2 = -1.732933, 	
+Parameter 3 = -0.028166, 	
+Parameter 4 = 0.926940, 	
+Parameter 5 = -0.958143, 	
+Parameter 6 = 0.185905, 	
+Parameter 7 = 0.277911, 	
+Parameter 8 = -1.709447, 	
+Parameter 9 = 0.018229, 	
+Parameter 10 = 0.941819, 	
+Parameter 11 = 0.665134, 	
+Parameter 12 = 0.258740, 	
+Parameter 13 = 3.966997, 	
+The actuator ranges are: 3.442023 	5.163034 	3.281863 	4.922795 	
+The evaluation at this point is -1.295062e+05 
+The mean iteration time is 220.61 seconds
+
+The percentage of feasible workspace is 96.76 % 
+
+Best point yet is: 1.351916 	-1.732933 	-0.028166 	0.926940 	-0.958143 	0.185905 	0.277911 	-1.709447 	0.018229 	0.941819 	0.665134 	0.258740 	3.966997 	
+The actuator range is: 3.442023 	5.163034 	3.281863 	4.922795 	

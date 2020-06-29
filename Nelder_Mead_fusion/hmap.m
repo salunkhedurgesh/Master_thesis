@@ -1,4 +1,4 @@
-function [h] = hmap(parameters)
+ function [h] = hmap(parameters)
 clear cnum;
 u11x = parameters(1) * cos(parameters(2));
 u11y = parameters(1) * sin(parameters(2));
@@ -19,7 +19,8 @@ s22z = parameters(12);
 t = parameters(13);
 i = 1;
 j = 1;
-
+cum_val = 0;
+elements = 0;
 for beta = 3 : -0.01 : -3
     for alpha = -3 : 0.01 : 3
         j11 = (2*sign(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(beta)*sin(alpha))*abs(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(beta)*sin(alpha))*(s12y*sin(alpha) + s12z*cos(beta)*cos(alpha) - s12x*sin(beta)*cos(alpha)) + 2*abs(t - u11z + s12y*sin(alpha) + s12z*cos(beta)*cos(alpha) - s12x*sin(beta)*cos(alpha))*sign(t - u11z + s12y*sin(alpha) + s12z*cos(beta)*cos(alpha) - s12x*sin(beta)*cos(alpha))*(s12y*cos(alpha) - s12z*cos(beta)*sin(alpha) + s12x*sin(beta)*sin(alpha)))/(2*(abs(t - u11z + s12y*sin(alpha) + s12z*cos(beta)*cos(alpha) - s12x*sin(beta)*cos(alpha))^2 + abs(s12x*cos(beta) - u11x + s12z*sin(beta))^2 + abs(u11y - s12y*cos(alpha) + s12z*cos(beta)*sin(alpha) - s12x*sin(beta)*sin(alpha))^2)^(1/2));
@@ -30,14 +31,45 @@ for beta = 3 : -0.01 : -3
         jac_mat = [j11, j12; j21, j22];
         S = svd(jac_mat);
         cnum(i, j) = min(S)/max(S);
+        if abs(beta) <= 1 || abs(alpha) <= 1
+            cum_val = cum_val + cnum(i,j);
+            elements = elements + 1;
+            rdw_points(elements, :) = [i, j];
+            rdw_angles(elements, :) = [alpha, beta];
+            rdw_cnum(elements) = cnum(i,j); 
+        end
         j = j+1;
     end
     i = i+1;
     j = 1;
 end
 
-h = heatmap(cnum, 'GridVisible','off', 'Colormap',hot);
-cdl = h.XDisplayLabels;                                    % Current Display Labels
-h.XDisplayLabels = repmat(' ',size(cdl,1), size(cdl,2));  
-h.YDisplayLabels = repmat(' ',size(cdl,1), size(cdl,2)); 
+
+min_con = min(rdw_cnum);
+max_con = max(rdw_cnum);
+title_string = ['Heat Map for the conditioning number', ' ', num2str(min_con), ' ', num2str(max_con)];
+h = heatmap(cnum, 'GridVisible','off', 'Colormap',summer, 'title', title_string);
+cdl = h.XDisplayLabels;  
+size(h.XDisplayLabels)
+gap = zeros(1, (size(h.XDisplayLabels, 1) - 1)/12 - 1);
+gap_static = repmat(" ",1, size(gap,2));
+label_array = [];
+for label_i = -3:0.5:3
+    if label_i == 3
+        label_array = [label_array, '3'];
+    else        
+        temp_str = string(label_i);
+        temp_str_size = length(temp_str);
+        
+        temp_int = size(gap,2) - temp_str_size + 1;
+        gap2 = repmat(' ',1, temp_int);
+        label_array = [label_array, temp_str, gap_static];
+    end
+end
+
+% Current Display Labels
+% h.XDisplayLabels = repmat(' ',size(cdl,1), size(cdl,2));
+h.YDisplayLabels = label_array';
+h.XDisplayLabels = label_array';
+
 end

@@ -9,10 +9,11 @@
 % 5. limit for the joints
 % 6. sobolset functionality
 
-function [best_point, best_rho] = nelder_mead_ms(type, n, ranges, starts, iterations, limits, objective_choice, sobol_var, save_files, reward)
+function [best_point, best_rho] = nelder_mead_ms(type, n, ranges, starts, iterations, limits, objective_choice, sobol_var, save_files, reward, maximize, git_mood)
     
     fprintf('Opening file named %s for storing the deep analysis of the multi-start optimisation \n', save_files(1));
     deep_fileID = fopen(save_files(1),'w');
+    fprintf(deep_fileID, '%s\n', git_mood);
     fprintf(deep_fileID, 'The type of mechanism optimised is %s\n', type);
     fprintf(deep_fileID, 'The dimension of the optimisation is %d, the number of starts are %d\n', n, starts);
     fprintf(deep_fileID, 'The number of iterations if same solution is encountered is %d \n', iterations);
@@ -32,7 +33,7 @@ function [best_point, best_rho] = nelder_mead_ms(type, n, ranges, starts, iterat
     end
     
     fprintf('Done: Calculated initial simplexes for %d starts \n\n', starts);
-    multi_eval = 0;
+    multi_eval = 1; %to avoid cases in which the evaluation stays at zero
     
     for multi_start = 1:starts
         fprintf("Live objective function in use\n");
@@ -41,10 +42,10 @@ function [best_point, best_rho] = nelder_mead_ms(type, n, ranges, starts, iterat
         fprintf("In case you want to change them, the assignment is done in nelder_mead_ms.m\n")
         S = sobol_set(((n+1)*(multi_start-1) +1):(n+1)*multi_start,:);
         
-        [single_best_point, single_best_rho, single_eval, optimum, mean_iter_time] = nelder_mead(type, S, iterations, objective_choice, ranges, limits, co_eff_mat, reward);
+        [single_best_point, single_best_rho, single_eval, optimum, mean_iter_time] = nelder_mead(type, S, iterations, objective_choice, ranges, limits, co_eff_mat, reward, maximize);
         plot_code(single_best_point);
-        [c_qual_one, ~] = objective_function(type, "workspace", single_best_point, limits, "binary");
-        plot_valid(type, single_best_point, limits, "binary", single_best_rho)
+        [c_qual_one, ~] = objective_function(type, "workspace", single_best_point, limits, "binary", "none");
+        plot_valid(type, single_best_point, limits, single_best_rho)
         
         print_single_nm(deep_fileID, single_best_point, single_best_rho, single_eval, iterations, optimum, mean_iter_time, c_qual_one);
         

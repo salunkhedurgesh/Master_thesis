@@ -117,6 +117,7 @@ function [type, n, ranges, starts, iterations, limits, objective_choice, sobol_v
         fprintf('WARNING: Invalid input, treating as 0\n');
         sobol_var = 0;
     end
+    
     % Taking input for the reward type
     prompt_reward = 'Type of reward function("binary", "linear", "invert")\n';
     reward = input(prompt_reward);
@@ -125,6 +126,16 @@ function [type, n, ranges, starts, iterations, limits, objective_choice, sobol_v
     else
         fprintf('WARNING: Invalid input, treating as binary reward\n');
         reward = "binary";
+    end
+    
+    % Taking input for the maximizing other objective function
+    prompt_multimax = 'Type of maximize function("joint_quality", "conditioning_number")\n';
+    multimax = input(prompt_multimax);
+    if multimax == "joint_quality" || multimax == "conditioning_number"
+        fprintf("\n");
+    else
+        fprintf('WARNING: Invalid input, treating as joint_quality multi-objective function\n');
+        reward = "joint_quality";
     end
     
 end
